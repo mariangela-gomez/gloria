@@ -59,8 +59,8 @@
     </a>
     <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     <nav class="nav__links" aria-label="Principal">
-      <a href="#mayeutica" data-p=".16">¿Qué es?</a>
-      <a href="#como" data-p=".5">Cómo se lee</a>
+      <a href="#mayeutica" data-p=".5">¿Qué es?</a>
+      <a href="#como" data-p=".72">Cómo se lee</a>
       <a href="#cuento">Ardillín</a>
       <a href="#autora">La autora</a>
       <a href="#contacto" class="btn btn--small">Quiero saber más</a>
@@ -80,7 +80,7 @@
       <p class="lead hi">Cumay crea libros físicos e interactivos, diseñados por una psicóloga, para que los niños jueguen, pregunten y descubran lo valiosos que son. Con un mensaje positivo en cada página.</p>
       <div class="hero__cta hi">
         <a href="#cuento" class="btn">Conoce a Ardillín</a>
-        <a href="#como" class="btn btn--ghost" data-p=".5">Cómo funciona</a>
+        <a href="#como" class="btn btn--ghost" data-p=".72">Cómo funciona</a>
       </div>
       <ul class="hero__facts hi">
         <li><strong>0</strong> pantallas</li>
@@ -287,14 +287,14 @@
   </div>
 </footer>
 
-<!-- ============ LIBRO ANIMADO (se vuela desde el hero y se abre al hacer scroll) ============ -->
+<!-- ============ LIBRO ANIMADO (pop-up): vuela desde el hero, se abre y las figuras se levantan ============ -->
 <div id="flybook" aria-label="Cuento Cumay abierto">
-  <div class="fb__intro"><div class="fb__float"><div class="fb__tilt">
+  <div class="fb__intro"><div class="fb__float"><div class="fb__tilt"><div class="fb__lean">
     <div class="fb__shadow"></div>
     <span class="sticker fb__sticker">¡Para tocar!</span>
     <div class="fb">
 
-      <!-- Página derecha final (R2) -->
+      <!-- Página derecha final (R3) -->
       <div class="pg pg--base pg--r">
         <div class="pgc pgc--center">
           <img class="mini-cover" src="images/ardillin-portada.jpg" alt="Ardillín, Copo de nieve">
@@ -304,8 +304,8 @@
         </div>
       </div>
 
-      <!-- Hoja 2: frente R1 / reverso L2 -->
-      <div class="leaf leaf--2">
+      <!-- Hoja 3: frente R2 / reverso L3 -->
+      <div class="leaf leaf--3">
         <div class="face face--f pg pg--r">
           <div class="pgc">
             <p class="eyebrow">Cómo se lee</p>
@@ -326,8 +326,8 @@
         </div>
       </div>
 
-      <!-- Hoja 1: frente R0 / reverso L1 -->
-      <div class="leaf leaf--1">
+      <!-- Hoja 2: frente R1 / reverso L2 -->
+      <div class="leaf leaf--2">
         <div class="face face--f pg pg--r">
           <div class="pgc pgc--center">
             <div class="question" role="button" tabindex="0" aria-label="Toca para ver otra pregunta">
@@ -351,12 +351,15 @@
         </div>
       </div>
 
-      <!-- Tapa: frente portada / reverso L0 -->
-      <div class="leaf leaf--0">
-        <div class="face face--f cover">
-          <img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve">
-          <span class="book__spine"></span>
-          <span class="book__shine"></span>
+      <!-- Hoja 1: frente R0 (escena pop-up) / reverso L1 -->
+      <div class="leaf leaf--1">
+        <div class="face face--f pg pg--r scene scene--r">
+          <div class="scene__art"></div>
+          <div class="pu pu--hill" style="--x:10px;--b:190px;--w:320px;--h:112px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#79c24a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div>
+          <div class="pu pu--tree" style="--x:258px;--b:120px;--w:78px;--h:132px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#4f9a2f" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#6fba49" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="pu pu--sq" style="--x:56px;--b:64px;--w:190px;--h:251px"><svg viewBox="0 -14 230 304"><path d="M122 272C24 252 -2 112 66 40c40-42 118-44 146 8 24 52-12 160-52 224z" fill="#d6d6de" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M92 62c34-28 82-24 100 6M104 98c32-22 62-14 78 10M118 138c24-14 42-8 52 10" stroke="#aaaab6" stroke-width="5" stroke-linecap="round" fill="none"/><ellipse cx="112" cy="214" rx="56" ry="64" fill="#f6f6f9" stroke="#fff" stroke-width="6" paint-order="stroke"/><circle cx="64" cy="66" r="19" fill="#fbfbfd" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="160" cy="66" r="19" fill="#fbfbfd" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="64" cy="68" r="10" fill="#f2b1c0"/><circle cx="160" cy="68" r="10" fill="#f2b1c0"/><ellipse cx="112" cy="114" rx="64" ry="56" fill="#fbfbfd" stroke="#fff" stroke-width="6" paint-order="stroke"/><ellipse cx="82" cy="110" rx="21" ry="26" fill="#f5c4d0"/><ellipse cx="142" cy="110" rx="21" ry="26" fill="#f5c4d0"/><ellipse cx="84" cy="110" rx="15" ry="20" fill="#1d1a24"/><ellipse cx="140" cy="110" rx="15" ry="20" fill="#1d1a24"/><circle cx="89" cy="102" r="5.5" fill="#fff"/><circle cx="145" cy="102" r="5.5" fill="#fff"/><circle cx="80" cy="118" r="2.5" fill="#fff"/><circle cx="136" cy="118" r="2.5" fill="#fff"/><ellipse cx="112" cy="140" rx="9" ry="6.5" fill="#e88aa0"/><path d="M112 146v6M106 154q6 5 12 0" stroke="#c9879a" stroke-width="2.5" stroke-linecap="round" fill="none"/><rect x="105" y="154" width="14" height="17" rx="3" fill="#fff" stroke="#d9d5c6" stroke-width="2"/><ellipse cx="70" cy="216" rx="14" ry="30" transform="rotate(18 70 216)" fill="#f6f6f9" stroke="#e4e4ec" stroke-width="3"/><ellipse cx="154" cy="216" rx="14" ry="30" transform="rotate(-18 154 216)" fill="#f6f6f9" stroke="#e4e4ec" stroke-width="3"/></svg></div>
+          <div class="pu pu--acorn" style="--x:118px;--b:26px;--w:98px;--h:120px"><svg viewBox="0 0 130 160"><path d="M65 38C26 38 14 70 20 104c6 34 22 52 45 52s39-18 45-52c6-34-6-66-45-66z" fill="#e6d3a4" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M40 70c-6 20-4 44 6 60" stroke="#f3e6c2" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M8 52C8 20 34 8 65 8s57 12 57 44c0 8-12 12-57 12S8 60 8 52z" fill="#8b4a2b" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M26 28l18 30M52 14l10 46M82 14l-6 46M104 28L88 58" stroke="#6e3a21" stroke-width="3.500" stroke-linecap="round"/><path d="M60 8c0-8 4-8 10-14" stroke="#6e3a21" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="pu pu--cloud" style="--x:190px;--b:350px;--w:110px;--h:56px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div>
         </div>
         <div class="face face--b pg pg--l">
           <div class="pgc">
@@ -368,8 +371,25 @@
         </div>
       </div>
 
+      <!-- Tapa: frente portada / reverso L0 (escena pop-up) -->
+      <div class="leaf leaf--0">
+        <div class="face face--f cover">
+          <img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve">
+          <span class="book__spine"></span>
+          <span class="book__shine"></span>
+        </div>
+        <div class="face face--b pg pg--l scene scene--l">
+          <div class="scene__art"></div>
+          <div class="pu pu--hill" style="--x:20px;--b:168px;--w:310px;--h:115px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#8fcf5a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div>
+          <div class="pu pu--tree" style="--x:24px;--b:96px;--w:100px;--h:170px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#4f9a2f" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#6fba49" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="pu pu--tree" style="--x:140px;--b:150px;--w:64px;--h:108px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#5aa636" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#7fc558" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="pu pu--sun" style="--x:200px;--b:290px;--w:92px;--h:92px"><svg viewBox="0 0 100 100"><g stroke="#f6c944" stroke-width="7" stroke-linecap="round"><path d="M50 4v14M50 82v14M4 50h14M82 50h14M17 17l10 10M73 73l10 10M83 17L73 27M27 73L17 83"/></g><circle cx="50" cy="50" r="26" fill="#ffe27a" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="41" cy="46" r="3" fill="#8b4a2b"/><circle cx="59" cy="46" r="3" fill="#8b4a2b"/><path d="M42 58q8 7 16 0" stroke="#8b4a2b" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="pu pu--cloud" style="--x:40px;--b:330px;--w:130px;--h:66px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+
     </div>
-  </div></div></div>
+  </div></div></div></div>
 </div>
 
 </body>

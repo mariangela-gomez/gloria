@@ -211,16 +211,15 @@ em{font-style:normal}
 #flybook{position:fixed;left:50%;top:50%;width:340px;height:451px;margin:-225px 0 0 -170px;z-index:40;pointer-events:none;visibility:hidden}
 #flybook.on{visibility:visible}
 #flybook.live{pointer-events:auto}
-.fb__intro,.fb__float,.fb__tilt,.fb{width:100%;height:100%;position:relative}
-.fb__tilt{transform-style:flat}
+.fb__intro,.fb__float,.fb__tilt,.fb__lean,.fb{width:100%;height:100%;position:relative}
+/* cadena 3D continua: sin overflow ni filtros en los ancestros de las figuras */
+#flybook,.fb__intro,.fb__float,.fb__tilt,.fb__lean,.fb,.leaf,.face{transform-style:preserve-3d}
 .fb__shadow{position:absolute;left:4%;right:-4%;bottom:-26px;height:34px;background:radial-gradient(ellipse at center,rgba(8,50,60,.5),transparent 70%);filter:blur(5px)}
 .fb{border-radius:8px}
 
 .pg,.leaf,.face{position:absolute;inset:0}
-.pg--base{z-index:0}
 .leaf{transform-origin:0 50%;transform-style:preserve-3d;will-change:transform}
-.leaf--0{z-index:30}.leaf--1{z-index:20}.leaf--2{z-index:10}
-.face{backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .face--b{transform:rotateY(180deg)}
 
 .cover{border-radius:4px 14px 14px 4px;box-shadow:-8px 14px 30px -8px rgba(8,50,60,.55),0 0 0 1px rgba(0,0,0,.1)}
@@ -259,3 +258,20 @@ em{font-style:normal}
 @media (max-width:860px){.story,#flybook{display:none!important}}
 .js-book .hero .sticker{display:none}
 .fb__sticker{top:5%;right:-8%;z-index:60;background:var(--lemon);color:var(--acorn);transform:rotate(8deg);opacity:0;white-space:nowrap}
+
+/* ---------- Escenas pop-up ---------- */
+.scene{overflow:visible}
+.scene__art{position:absolute;inset:0;border-radius:inherit;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 34%,rgba(255,255,255,.55),transparent 55%),
+    linear-gradient(180deg,#7fcfdc 0%,#bfe8ee 48%,#e8f6d4 49%,#b6df86 100%)}
+.scene--r .scene__art{background:
+    radial-gradient(circle at 40% 30%,rgba(255,255,255,.5),transparent 55%),
+    linear-gradient(180deg,#8fd6df 0%,#c9eef0 46%,#e8f6d4 47%,#a8d97a 100%)}
+.scene--r .scene__art::after{content:"";position:absolute;left:-20%;right:-20%;bottom:-10%;height:46%;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(180deg,#f6d27a,#f2c86b);transform:rotate(-6deg)}
+.scene--l .scene__art::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(180deg,#8fcf5a,#6db33f)}
+
+.pu{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);height:var(--h);transform-origin:50% 100%;transform-style:flat;will-change:transform}
+.pu svg{width:100%;height:100%;display:block;overflow:visible}
+.pu--hill svg{height:100%}
+.pu__sh{position:absolute;left:var(--x);bottom:calc(var(--b) - 7px);width:var(--w);height:16px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(20,60,20,.5),transparent 70%);opacity:0;transform-origin:50% 50%}

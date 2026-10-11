@@ -172,9 +172,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const slot = $('#bookSlot');
     const float = $('.fb__float');
     const tilt = $('.fb__tilt');
+    const lean = $('.fb__lean');
     const intro = $('.fb__intro');
-    gsap.fromTo('.fb__sticker', { scale: 0, rotation: -30, opacity: 0 }, { scale: 1, rotation: 8, opacity: 1, duration: .7, ease: 'back.out(3)', delay: 1.7 });
-    const cover = $('.leaf--0'), leaf1 = $('.leaf--1'), leaf2 = $('.leaf--2');
+    const leaves = [$('.leaf--0'), $('.leaf--1'), $('.leaf--2'), $('.leaf--3')];
+    const [cover, leaf1, leaf2, leaf3] = leaves;
+    const zs = [3.6, 2.7, 1.8, .9]; // grosor de las hojas (evita que se solapen)
     const g = { S: 1, sx: 0, sy: 0, ss: 1 };
     const measure = () => {
       const vw = innerWidth, vh = innerHeight;
@@ -188,20 +190,35 @@ window.addEventListener('DOMContentLoaded', () => {
     measure();
 
     root.classList.add('js-book');
-    gsap.set(wrap, { transformPerspective: 1400 });
-    gsap.set(tilt, { transformPerspective: 1200 });
-    gsap.set([cover, leaf1, leaf2], { transformPerspective: 2200 });
+    gsap.set(wrap, { transformPerspective: 2600 });
+    gsap.set(tilt, { transformPerspective: 3000 });
+    // la perspectiva del pop-up nace en el lomo, para que las dos páginas se vean simétricas
+    gsap.set(lean, { transformPerspective: 1500, transformOrigin: '0% 50%' });
+    leaves.forEach((l, i) => gsap.set(l, { z: zs[i] }));
     wrap.classList.add('on');
 
     // contenido de cada página: oculto hasta que el cuento llega a ella
     const content = sel => $$(sel + ' .pgc > *');
-    const L0 = content('.leaf--0 .face--b'), R0 = content('.leaf--1 .face--f');
     const L1 = content('.leaf--1 .face--b'), R1 = content('.leaf--2 .face--f');
-    const L2 = content('.leaf--2 .face--b'), R2 = content('.pg--base');
-    gsap.set([L0, R0, L1, R1, L2, R2], { opacity: 0, y: 16 });
+    const L2 = content('.leaf--2 .face--b'), R2 = content('.leaf--3 .face--f');
+    const L3 = content('.leaf--3 .face--b'), R3 = content('.pg--base');
+    gsap.set([L1, R1, L2, R2, L3, R3], { opacity: 0, y: 16 });
+
+    // figuras pop-up: acostadas sobre la página (rotationX 0), se levantan a -90°
+    const order = ['.pu--hill', '.pu--tree', '.pu--sun', '.pu--cloud', '.pu--sq', '.pu--acorn'];
+    const pops = order.flatMap(sel => $$(sel, wrap));
+    const shadows = pops.map(p => {
+      const sh = document.createElement('i');
+      sh.className = 'pu__sh';
+      sh.setAttribute('style', p.getAttribute('style'));
+      p.parentNode.insertBefore(sh, p);
+      return sh;
+    });
+    gsap.set(pops, { rotationX: 0 });
 
     // entrada del libro + flotación
-    gsap.from(intro, { y: 90, opacity: 0, rotation: -10, scale: .8, duration: 1.1, ease: 'back.out(1.5)', delay: .5 });
+    gsap.from(intro, { y: 90, opacity: 0, rotation: -10, scale: .8, duration: 1.1, ease: 'back.out(1.5)', delay: .5, clearProps: 'opacity' });
+    gsap.fromTo('.fb__sticker', { scale: 0, rotation: -30, opacity: 0 }, { scale: 1, rotation: 8, opacity: 1, duration: .7, ease: 'back.out(3)', delay: 1.7 });
     const floating = gsap.to(float, { y: -14, duration: 2.8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
 
     // inclinación con el mouse mientras está en el hero
@@ -230,42 +247,61 @@ window.addEventListener('DOMContentLoaded', () => {
     fly.fromTo(wrap,
       { x: () => g.sx, y: () => g.sy, scale: () => g.ss, rotationY: -14, rotationX: 4, rotation: -2 },
       { x: 0, y: NAV / 2, scale: () => g.S, rotationY: 0, rotationX: 0, rotation: 0, ease: 'power1.inOut' });
-
     fly.fromTo('.fb__sticker', { opacity: 1, scale: 1 }, { opacity: 0, scale: .5, duration: .12, ease: 'power1.in', immediateRender: false }, 0);
 
-    /* 2) apertura: se fija la sección y el scroll pasa las páginas */
+    /* 2) apertura: se fija la sección y el scroll abre el libro y levanta las figuras */
     const shift = () => g.S * W / 2;
+    const S2 = .9;                        // el libro se achica un poco al inclinarse
+    const shift2 = () => g.S * S2 * W / 2;
     const open = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: {
-        trigger: '.story', start: 'top top', end: () => '+=' + innerHeight * 6.5,
+        trigger: '.story', start: 'top top', end: () => '+=' + innerHeight * 9.5,
         pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
         onToggle: self => wrap.classList.toggle('live', self.isActive)
       }
     });
     const stagger = (els, t) => open.to(els, { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power2.out' }, t);
+    const turn = (leaf, i, t) => open.to(leaf, { rotationY: -180, z: -zs[i], duration: 1.3 }, t);
 
     open
-      .to('.story__cap', { opacity: 0, x: (i) => (i ? 40 : -40), duration: .6, ease: 'power1.in' }, .1)
-      .to('.story__hint', { opacity: 0, duration: .3 }, .1)
-      // tapa
-      .to(cover, { rotationY: -180, duration: 1.3 }, .3)
-      .fromTo(wrap, { x: 0 }, { x: shift, duration: 1.3, immediateRender: false }, .3)
-      .set(cover, { zIndex: 1 }, .95);
-    stagger(L0, 1.0); stagger(R0, 1.0);
+      .to('.story__cap', { opacity: 0, x: i => (i ? 40 : -40), duration: .6, ease: 'power1.in' }, .1)
+      .to('.story__hint', { opacity: 0, duration: .3 }, .1);
+
+    // tapa
+    open.fromTo(wrap, { x: 0 }, { x: shift, duration: 1.3, immediateRender: false }, .3);
+    turn(cover, 0, .3);
+
+    // escena pop-up: el libro se inclina y las figuras se levantan en capas
+    open
+      .fromTo(lean, { rotationX: 0 }, { rotationX: 44, duration: 1, immediateRender: false }, 1.7)
+      .fromTo(wrap, { scale: () => g.S, x: shift, y: NAV / 2 },
+        { scale: () => g.S * S2, x: shift2, y: NAV / 2 + 34, duration: 1, immediateRender: false }, 1.7);
+    pops.forEach((p, i) => {
+      const t = 2.5 + i * .15;
+      open.to(p, { rotationX: -90, duration: .9, ease: 'back.out(1.6)' }, t);
+      open.fromTo(shadows[i], { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: .9, immediateRender: false }, t);
+    });
+    // las figuras se pliegan y el libro vuelve a quedar plano
+    open
+      .to(pops, { rotationX: 0, duration: .7, stagger: { each: .05, from: 'end' }, ease: 'power2.in' }, 5.6)
+      .to(shadows, { opacity: 0, duration: .5 }, 5.6)
+      .to(lean, { rotationX: 0, duration: .9 }, 5.9)
+      .to(wrap, { scale: () => g.S, x: shift, y: NAV / 2, duration: .9 }, 5.9);
+
     // hoja 1
-    open
-      .to(leaf1, { rotationY: -180, duration: 1.3 }, 3)
-      .set(leaf1, { zIndex: 2 }, 3.65);
-    stagger(L1, 3.5); stagger(R1, 3.5);
+    turn(leaf1, 1, 7);
+    stagger(L1, 7.5); stagger(R1, 7.5);
     // hoja 2
-    open
-      .to(leaf2, { rotationY: -180, duration: 1.3 }, 5.6)
-      .set(leaf2, { zIndex: 3 }, 6.25);
-    stagger(L2, 6.1); stagger(R2, 6.1);
+    turn(leaf2, 2, 9.4);
+    stagger(L2, 9.9); stagger(R2, 9.9);
+    // hoja 3
+    turn(leaf3, 3, 11.8);
+    stagger(L3, 12.3); stagger(R3, 12.3);
+
     // despedida
     open
-      .fromTo(wrap, { opacity: 1, y: NAV / 2 }, { opacity: 0, y: -90, duration: 1, ease: 'power2.in', immediateRender: false }, 8.4)
+      .fromTo(wrap, { opacity: 1, y: NAV / 2 }, { opacity: 0, y: -90, duration: 1, ease: 'power2.in', immediateRender: false }, 14.7)
       .to({}, { duration: .2 });
 
     // enlaces del menú: llevan a la página correspondiente del libro
@@ -287,6 +323,7 @@ window.addEventListener('DOMContentLoaded', () => {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('resize', onResize);
       navHandlers.forEach(([a, h]) => a.removeEventListener('click', h));
+      shadows.forEach(sh => sh.remove());
       root.classList.remove('js-book');
       wrap.classList.remove('on', 'live');
     };
