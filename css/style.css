@@ -71,7 +71,7 @@ em{font-style:normal}
 
 .hero__book{position:relative;display:grid;place-items:center;perspective:1200px}
 .book-slot{width:min(330px,78%);aspect-ratio:411/545}
-.book{position:relative;width:100%;border-radius:6px 14px 14px 6px;transform:rotateY(-14deg) rotateX(4deg) rotate(-2deg);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:-14px 22px 40px -10px rgba(10,60,70,.55),0 0 0 1px rgba(0,0,0,.08);animation:float 6s ease-in-out infinite}
+.book{position:relative;width:100%;overflow:hidden;border-radius:6px 14px 14px 6px;transform:rotateY(-14deg) rotateX(4deg) rotate(-2deg);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:-14px 22px 40px -10px rgba(10,60,70,.55),0 0 0 1px rgba(0,0,0,.08);animation:float 6s ease-in-out infinite}
 .book img{width:100%;border-radius:6px 14px 14px 6px}
 .book__spine{position:absolute;inset:0 auto 0 0;width:14px;border-radius:6px 0 0 6px;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.25) 60%,transparent)}
 .book__shine{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);transition:transform .9s}
@@ -218,7 +218,7 @@ em{font-style:normal}
 .fb{border-radius:8px}
 
 .pg,.leaf,.face{position:absolute;inset:0}
-.leaf{transform-origin:0 50%;transform-style:preserve-3d;will-change:transform}
+.leaf{transform-origin:0 50%;transform-style:preserve-3d}
 .face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .face--b{transform:rotateY(180deg)}
 
@@ -227,8 +227,8 @@ em{font-style:normal}
 
 /* páginas de papel */
 .pg{background:#fffaf0;color:var(--ink)}
-.pg--r{border-radius:2px 12px 12px 2px;background:linear-gradient(90deg,rgba(120,90,40,.2),rgba(120,90,40,0) 9%),#fffaf0;box-shadow:inset -2px 0 0 #efe5c8}
-.pg--l{border-radius:12px 2px 2px 12px;background:linear-gradient(270deg,rgba(120,90,40,.22),rgba(120,90,40,0) 9%),#fffaf0;box-shadow:inset 2px 0 0 #efe5c8}
+.pg--r{border-radius:2px 12px 12px 2px;background:linear-gradient(90deg,rgba(120,90,40,.13),rgba(120,90,40,.03) 3%,rgba(120,90,40,0) 6%),#fffaf0;box-shadow:inset -2px 0 0 #efe5c8}
+.pg--l{border-radius:12px 2px 2px 12px;background:linear-gradient(270deg,rgba(120,90,40,.13),rgba(120,90,40,.03) 3%,rgba(120,90,40,0) 6%),#fffaf0;box-shadow:inset 2px 0 0 #efe5c8}
 .pgc{position:absolute;inset:0;padding:30px 28px 26px;display:flex;flex-direction:column;gap:12px;justify-content:center}
 .pg--l .pgc{padding-right:34px}.pg--r .pgc{padding-left:34px}
 .pgc--center{align-items:center;text-align:center}
@@ -250,31 +250,31 @@ em{font-style:normal}
 .quote{font-family:var(--display)!important;font-weight:600;font-size:1.7rem!important;line-height:1.15!important;color:#14505f!important}
 .quote-sub{font-size:.82rem!important}
 
-.pg .question{width:100%;padding:22px 20px;box-shadow:0 7px 0 var(--grass-d),0 14px 24px -12px rgba(0,0,0,.35);border:2px solid var(--grass-l);transform:rotate(-2deg)}
+.pg .question{width:100%;padding:22px 20px;box-shadow:0 7px 0 var(--grass-d),0 14px 24px -12px rgba(0,0,0,.35);border:2px solid var(--grass-l)}
+.q-page{cursor:pointer}
 .pg .question__text{font-size:1.2rem!important;color:var(--ink)!important;min-height:5.4em;margin:.5em 0 .6em!important;line-height:1.25!important}
 .pg .question__hint{font-size:.78rem}
 .pg .btn{pointer-events:auto}
 
 @media (max-width:860px){.story__cap{display:none}}
-.js-book .hero .sticker{display:none}
-.fb__sticker{top:5%;right:-8%;z-index:60;background:var(--lemon);color:var(--acorn);transform:rotate(8deg);opacity:0;white-space:nowrap}
 
 /* ---------- Escenas pop-up ---------- */
 .scene{overflow:visible}
 .scene__art{position:absolute;inset:0;border-radius:inherit;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 34%,rgba(255,255,255,.55),transparent 55%),
-    linear-gradient(180deg,#7fcfdc 0%,#bfe8ee 48%,#e8f6d4 49%,#b6df86 100%)}
-.scene--r .scene__art{background:
-    radial-gradient(circle at 40% 30%,rgba(255,255,255,.5),transparent 55%),
-    linear-gradient(180deg,#8fd6df 0%,#c9eef0 46%,#e8f6d4 47%,#a8d97a 100%)}
-.scene--r .scene__art::after{content:"";position:absolute;left:-20%;right:-20%;bottom:-10%;height:46%;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(180deg,#f6d27a,#f2c86b);transform:rotate(-6deg)}
-.scene--l .scene__art::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(180deg,#8fcf5a,#6db33f)}
+  background:linear-gradient(180deg,#7fcfdc 0%,#bfe8ee 47%,#dff2cf 48%,#9fd56e 62%,#7cc04a 100%)}
+.scene--l .scene__art{background-position:0 0}
+.scene--r .scene__art::after{content:"";position:absolute;left:-30%;right:-10%;bottom:-18%;height:44%;border-radius:50% 50% 0 0/100% 100% 0 0;background:#f2c86b;box-shadow:inset 0 6px 0 #f6d88f}
+/* pliegue sobre la ilustración */
+.scene--l .scene__art::before,.scene--r .scene__art::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+.scene--l .scene__art::before{background:linear-gradient(270deg,rgba(40,60,30,.16),rgba(40,60,30,0) 6%)}
+.scene--r .scene__art::before{background:linear-gradient(90deg,rgba(40,60,30,.16),rgba(40,60,30,0) 6%)}
 
-.pu{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);height:var(--h);transform-origin:50% 100%;transform-style:flat;will-change:transform}
+.pu{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);height:var(--h);transform-origin:50% 100%;transform-style:flat}
 .pu svg{width:100%;height:100%;display:block;overflow:visible}
 .pu--hill svg{height:100%}
 .pu__sh{position:absolute;left:var(--x);bottom:calc(var(--b) - 7px);width:var(--w);height:16px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(20,60,20,.5),transparent 70%);opacity:0;transform-origin:50% 50%}
 /* en una cadena 3D, cada hijo necesita su propio backface oculto o se transparenta por detrás de la hoja */
 .face > *,.pu{backface-visibility:hidden;-webkit-backface-visibility:hidden}
-@media (max-width:860px){.fb__sticker{right:2%;top:-3%}}
+/* bordes de la pila de páginas (se ve el grosor del libro) */
+.pg--base{box-shadow:inset 2px 0 0 #efe5c8,2px 2px 0 #f3ead2,4px 4px 0 #e9dfc2,6px 6px 0 #f3ead2,7px 7px 10px -2px rgba(0,0,0,.18)}
+.leaf--0 .face--b{box-shadow:inset -2px 0 0 #efe5c8,-2px 2px 0 #f3ead2,-4px 4px 0 #e9dfc2,-6px 6px 0 #f3ead2,-7px 7px 10px -2px rgba(0,0,0,.18)}

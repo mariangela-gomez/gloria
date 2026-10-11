@@ -37,6 +37,9 @@ const nextQuestion = () => {
     texts.forEach(t => { t.textContent = questions[qi]; t.classList.remove('out'); });
   }, 250);
 };
+$$('.q-page').forEach(p => p.addEventListener('click', e => {
+  if (!e.target.closest('.question')) nextQuestion(); // en 3D el clic a veces lo recibe la página
+}));
 qCards.forEach(c => {
   c.addEventListener('click', nextQuestion);
   c.addEventListener('keydown', e => {
@@ -120,8 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .fromTo('.hi.lead', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .55)
         .fromTo('.hi.hero__cta', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .7)
         .fromTo('.hi.hero__facts li', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .1 }, .85)
-        .set('.hi.hero__facts', { opacity: 1 }, .85)
-        .fromTo('.sticker', { scale: 0, rotation: -30, opacity: 0 }, { scale: 1, rotation: 8, opacity: 1, duration: .7, ease: 'back.out(3)' }, 1.2);
+        .set('.hi.hero__facts', { opacity: 1 }, .85);
 
       gsap.to('.cloud', { y: -30, duration: 5, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: 1.2 });
 
@@ -176,7 +178,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const intro = $('.fb__intro');
     const leaves = [$('.leaf--0'), $('.leaf--1'), $('.leaf--2'), $('.leaf--3')];
     const [cover, leaf1, leaf2, leaf3] = leaves;
-    const zs = [3.6, 2.7, 1.8, .9]; // grosor de las hojas (evita que se solapen)
+    const zs = [1.6, 1.2, .8, .4]; // grosor de las hojas (evita que se solapen)
     const g = { S: 1, Sp: 1, Ss: 1, sx: 0, sy: 0, ss: 1 };
     const measure = () => {
       const vw = innerWidth, vh = innerHeight;
@@ -199,19 +201,20 @@ window.addEventListener('DOMContentLoaded', () => {
     gsap.set(wrap, { transformPerspective: 2600 });
     gsap.set(tilt, { transformPerspective: 3000 });
     // la perspectiva del pop-up nace en el lomo, para que las dos páginas se vean simétricas
-    gsap.set(lean, { transformPerspective: 1500, transformOrigin: '0% 50%' });
+    gsap.set(lean, { transformPerspective: 2300, transformOrigin: '0% 50%' });
     leaves.forEach((l, i) => gsap.set(l, { z: zs[i] }));
     wrap.classList.add('on');
 
-    // contenido de cada página: oculto hasta que el cuento llega a ella
-    const content = sel => $$(sel + ' .pgc > *');
-    const L1 = content('.leaf--1 .face--b'), R1 = content('.leaf--2 .face--f');
-    const L2 = content('.leaf--2 .face--b'), R2 = content('.leaf--3 .face--f');
-    const L3 = content('.leaf--3 .face--b'), R3 = content('.pg--base');
-    gsap.set([L1, R1, L2, R2, L3, R3], { opacity: 0, y: 16 });
+    // cada cara se muestra solo cuando mira hacia el lector (así nada se transparenta)
+    // fronts[4] es la última página derecha (fija). Solo se renderizan las dos páginas
+    // a la vista y la hoja que está girando.
+    const fronts = [...leaves.map(l => $('.face--f', l)), $('.pg--base')];
+    const backs = leaves.map(l => $('.face--b', l));
+    gsap.set([...backs, ...fronts.slice(1)], { visibility: 'hidden' });
 
-    // figuras pop-up: acostadas sobre la página (rotationX 0), se levantan a -90°
-    const order = ['.pu--hill', '.pu--tree', '.pu--sun', '.pu--cloud', '.pu--sq', '.pu--acorn'];
+    // figuras pop-up: acostadas sobre la página (rotationX 0), se levantan a -90°.
+    // Se levantan de adelante hacia atrás; acostadas, las de adelante quedan encima.
+    const order = ['.pu--acorn', '.pu--sq', '.pu--tree', '.pu--cloud', '.pu--sun', '.pu--hill'];
     const pops = order.flatMap(sel => $$(sel, wrap));
     const shadows = pops.map(p => {
       const sh = document.createElement('i');
@@ -220,11 +223,10 @@ window.addEventListener('DOMContentLoaded', () => {
       p.parentNode.insertBefore(sh, p);
       return sh;
     });
-    gsap.set(pops, { rotationX: 0 });
+    pops.forEach((p, i) => gsap.set(p, { rotationX: 0, z: (pops.length - i) * .04 }));
 
     // entrada del libro + flotación
     gsap.from(intro, { y: 90, opacity: 0, rotation: -10, scale: .8, duration: 1.1, ease: 'back.out(1.5)', delay: .5, clearProps: 'opacity' });
-    gsap.fromTo('.fb__sticker', { scale: 0, rotation: -30, opacity: 0 }, { scale: 1, rotation: 8, opacity: 1, duration: .7, ease: 'back.out(3)', delay: 1.7 });
     const floating = gsap.to(float, { y: -14, duration: 2.8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
 
     // inclinación con el mouse mientras está en el hero
@@ -253,7 +255,6 @@ window.addEventListener('DOMContentLoaded', () => {
     fly.fromTo(wrap,
       { x: () => g.sx, y: () => g.sy, scale: () => g.ss, rotationY: -14, rotationX: 4, rotation: -2 },
       { x: 0, y: NAV / 2, scale: () => g.S, rotationY: 0, rotationX: 0, rotation: 0, ease: 'power1.inOut' });
-    fly.fromTo('.fb__sticker', { opacity: 1, scale: 1 }, { opacity: 0, scale: .5, duration: .12, ease: 'power1.in', immediateRender: false }, 0);
 
     /* 2) apertura: se fija la sección y el scroll abre el libro y levanta las figuras */
     const S2 = .9;                        // el libro se achica un poco al inclinarse
@@ -265,8 +266,12 @@ window.addEventListener('DOMContentLoaded', () => {
         onToggle: self => wrap.classList.toggle('live', self.isActive)
       }
     });
-    const stagger = (els, t) => open.to(els, { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power2.out' }, t);
-    const turn = (leaf, i, t) => open.to(leaf, { rotationY: -180, z: -zs[i], duration: 1.3 }, t);
+    const turn = (leaf, i, t) => open
+      .set(fronts[i + 1], { visibility: 'visible' }, t)
+      .to(leaf, { rotationY: -180, z: -zs[i], duration: 1.3 }, t)
+      .set(fronts[i], { visibility: 'hidden' }, t + .65)
+      .set(backs[i], { visibility: 'visible' }, t + .65)
+      .set(i ? backs[i - 1] : {}, { visibility: 'hidden' }, t + 1.3);
     // cámara: escala y desplazamiento del libro. El centro de la página derecha es x=0,
     // el lomo es x=s·W/2 y el centro de la página izquierda es x=s·W.
     const cam = (t, s, k, d = 1, y = NAV / 2) =>
@@ -291,7 +296,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     // las figuras se pliegan y el libro vuelve a quedar plano
     open
-      .to(pops, { rotationX: 0, duration: .7, stagger: { each: .05, from: 'end' }, ease: 'power2.in' }, 5.6)
+      .to(pops, { rotationX: 0, duration: .7, stagger: { each: .05, from: 'end' }, ease: 'power2.in' }, 5.4)
       .to(shadows, { opacity: 0, duration: .5 }, 5.6)
       .to(lean, { rotationX: 0, duration: .9 }, 5.9);
     cam(5.9, 'Ss', SPREAD, .9);
@@ -299,21 +304,21 @@ window.addEventListener('DOMContentLoaded', () => {
     let end;
     if (!narrow) {
       // escritorio: se ven las dos páginas a la vez
-      turn(leaf1, 1, 7);    stagger(L1, 7.5);  stagger(R1, 7.5);
-      turn(leaf2, 2, 9.4);  stagger(L2, 9.9);  stagger(R2, 9.9);
-      turn(leaf3, 3, 11.8); stagger(L3, 12.3); stagger(R3, 12.3);
+      turn(leaf1, 1, 7);
+      turn(leaf2, 2, 9.4);
+      turn(leaf3, 3, 11.8);
       end = 14.7;
     } else {
       // móvil: la cámara se acerca a cada página para que el texto se lea
       turn(leaf1, 1, 7);
-      cam(8.2, 'Sp', LEFT, 1);   stagger(L1, 8.8);
-      cam(10, 'Sp', RIGHT, 1);   stagger(R1, 10.6);
+      cam(8.2, 'Sp', LEFT, 1);
+      cam(10, 'Sp', RIGHT, 1);
       turn(leaf2, 2, 11.8);
-      cam(13, 'Sp', LEFT, 1);    stagger(L2, 13.6);
-      cam(14.8, 'Sp', RIGHT, 1); stagger(R2, 15.4);
+      cam(13, 'Sp', LEFT, 1);
+      cam(14.8, 'Sp', RIGHT, 1);
       turn(leaf3, 3, 16.6);
-      cam(17.8, 'Sp', LEFT, 1);  stagger(L3, 18.4);
-      cam(19.6, 'Sp', RIGHT, 1); stagger(R3, 20.2);
+      cam(17.8, 'Sp', LEFT, 1);
+      cam(19.6, 'Sp', RIGHT, 1);
       end = 21.8;
     }
 
