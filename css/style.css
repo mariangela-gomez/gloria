@@ -199,7 +199,7 @@ em{font-style:normal}
 .js-anim .hi,.js-anim .hi-title .w{opacity:0}
 .hi-title .w{display:inline-block}
 
-.story{position:relative;height:100vh;background:var(--grass);overflow:hidden;color:#fff}
+.story{position:relative;height:100vh;height:100svh;background:var(--grass);overflow:hidden;color:#fff}
 .story::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(255,255,255,.28),transparent 55%),radial-gradient(circle at 12% 90%,rgba(0,0,0,.14),transparent 40%),repeating-radial-gradient(circle at 50% 55%,transparent 0 46px,rgba(255,255,255,.05) 46px 48px)}
 .story__cap{position:absolute;top:50%;transform:translateY(-50%);max-width:300px}
 .story__cap--l{left:max(24px,4vw)}
@@ -255,7 +255,7 @@ em{font-style:normal}
 .pg .question__hint{font-size:.78rem}
 .pg .btn{pointer-events:auto}
 
-@media (max-width:860px){.story,#flybook{display:none!important}}
+@media (max-width:860px){.story__cap{display:none}}
 .js-book .hero .sticker{display:none}
 .fb__sticker{top:5%;right:-8%;z-index:60;background:var(--lemon);color:var(--acorn);transform:rotate(8deg);opacity:0;white-space:nowrap}
 
@@ -275,3 +275,6 @@ em{font-style:normal}
 .pu svg{width:100%;height:100%;display:block;overflow:visible}
 .pu--hill svg{height:100%}
 .pu__sh{position:absolute;left:var(--x);bottom:calc(var(--b) - 7px);width:var(--w);height:16px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(20,60,20,.5),transparent 70%);opacity:0;transform-origin:50% 50%}
+/* en una cadena 3D, cada hijo necesita su propio backface oculto o se transparenta por detrás de la hoja */
+.face > *,.pu{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+@media (max-width:860px){.fb__sticker{right:2%;top:-3%}}
