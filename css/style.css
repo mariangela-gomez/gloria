@@ -310,7 +310,7 @@ em{font-style:normal}
 .pillars{margin-bottom:96px}
 .pillars__head{text-align:center;margin-bottom:36px}
 .pillars__head p{color:var(--muted)}
-.pillars__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pillars__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .pillar{background:#fff;border-radius:22px;padding:26px 22px;border-top:6px solid var(--c);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:transform .25s}
 .pillar:hover{transform:translateY(-5px)}
 .pillar__who{align-self:flex-start;font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.04em;color:var(--c);background:color-mix(in srgb,var(--c) 10%,white);padding:.3em .8em;border-radius:999px}
