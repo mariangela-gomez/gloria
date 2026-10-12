@@ -256,7 +256,7 @@ em{font-style:normal}
 .pg .question__hint{font-size:.78rem}
 .pg .btn{pointer-events:auto}
 
-@media (max-width:860px){.story__cap{display:none}}
+@media (max-width:860px){.story,#flybook{display:none!important}}
 
 /* ---------- Escenas pop-up ---------- */
 .scene{overflow:visible}

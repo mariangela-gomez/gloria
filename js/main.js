@@ -206,7 +206,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
       /* ----- El cuento baja desde el hero y se abre ----- */
       let cleanupBook = () => {};
-      if (frameScrolls()) cleanupBook = initBook(narrow);
+      // solo en pantallas anchas: en el celular el libro fijo taparía el texto al bajar
+      if (!narrow && frameScrolls()) cleanupBook = initBook();
 
       return () => {
         cleanupBook();
@@ -216,7 +217,7 @@ window.addEventListener('DOMContentLoaded', () => {
   );
   setup();
 
-  function initBook(narrow) {
+  function initBook() {
     const W = 340, H = 451, NAV = 68; // NAV: alto del menú fijo
     const wrap = $('#flybook');
     const slot = $('#bookSlot');
@@ -227,16 +228,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const leaves = [$('.leaf--0'), $('.leaf--1'), $('.leaf--2'), $('.leaf--3')];
     const [cover, leaf1, leaf2, leaf3] = leaves;
     const zs = [1.6, 1.2, .8, .4]; // grosor de las hojas (evita que se solapen)
-    const g = { S: 1, Sp: 1, Ss: 1, sx: 0, sy: 0, ss: 1 };
+    const g = { S: 1, sx: 0, sy: 0, ss: 1 };
     const measure = () => {
       const vw = innerWidth, vh = innerHeight;
-      if (narrow) {
-        g.Sp = Math.min((vw - 28) / W, (vh - 150) / H); // una página a pantalla completa
-        g.Ss = (vw - 16) / (2 * W);                      // el libro abierto completo
-        g.S = g.Sp;
-      } else {
-        g.S = g.Sp = g.Ss = Math.min((vh - 150) / H, vw * .94 / (2 * W));
-      }
+      g.S = Math.min((vh - 150) / H, vw * .94 / (2 * W));
       const r = slot.getBoundingClientRect();
       const top = r.top + scrollY;
       g.sx = r.left + r.width / 2 - vw / 2;
@@ -310,7 +305,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const open = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: {
-        trigger: '.story', start: 'top top', end: () => '+=' + VH() * (narrow ? 8 : 5.5),
+        trigger: '.story', start: 'top top', end: () => '+=' + VH() * 5.5,
         pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true,
         onToggle: self => wrap.classList.toggle('live', self.isActive)
       }
@@ -323,11 +318,10 @@ window.addEventListener('DOMContentLoaded', () => {
         .set(backs[i], { visibility: 'visible' }, t + .6);
       if (i) open.set(backs[i - 1], { visibility: 'hidden' }, t + 1.2);
     };
-    // cámara: escala y desplazamiento del libro. El centro de la página derecha es x=0,
-    // el lomo es x=s·W/2 y el centro de la página izquierda es x=s·W.
-    const cam = (t, s, k, d = 1, y = NAV / 2) =>
-      open.to(wrap, { scale: () => g[s] * (k.scale || 1), x: () => g[s] * (k.scale || 1) * W * k.at, y, duration: d }, t);
-    const SPREAD = { at: .5 }, LEFT = { at: 1 }, RIGHT = { at: 0 };
+    // cámara: escala y desplazamiento del libro. Con x=s·W/2 el lomo queda al centro.
+    const cam = (t, k, d = 1, y = NAV / 2) =>
+      open.to(wrap, { scale: () => g.S * (k.scale || 1), x: () => g.S * (k.scale || 1) * W * k.at, y, duration: d }, t);
+    const SPREAD = { at: .5 };
 
     open
       .to('.story__cap', { opacity: 0, x: i => (i ? 40 : -40), duration: .5, ease: 'power1.in' }, 0)
@@ -335,11 +329,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // tapa: se abre y la cámara muestra el libro completo
     turn(cover, 0, .2);
-    cam(.2, 'Ss', SPREAD, 1.2);
+    cam(.2, SPREAD, 1.2);
 
     // escena pop-up: el libro se inclina y las figuras se levantan en capas
     open.fromTo(lean, { rotationX: 0 }, { rotationX: 44, duration: .9, immediateRender: false }, 1.4);
-    cam(1.4, 'Ss', { at: .5, scale: S2 }, .9, NAV / 2 + (narrow ? 20 : 34));
+    cam(1.4, { at: .5, scale: S2 }, .9, NAV / 2 + 34);
     pops.forEach((p, i) => {
       const t = 1.9 + i * .12;
       open.to(p, { rotationX: -90, duration: .8, ease: 'back.out(1.6)' }, t);
@@ -350,27 +344,12 @@ window.addEventListener('DOMContentLoaded', () => {
       .to(pops, { rotationX: 0, duration: .6, stagger: { each: .04, from: 'end' }, ease: 'power2.in' }, 4.3)
       .to(shadows, { opacity: 0, duration: .4 }, 4.5)
       .to(lean, { rotationX: 0, duration: .8 }, 4.7);
-    cam(4.7, 'Ss', SPREAD, .8);
+    cam(4.7, SPREAD, .8);
 
-    if (!narrow) {
-      // escritorio: se ven las dos páginas a la vez
-      turn(leaf1, 1, 5.7); open.addLabel('que', 7.1);
-      turn(leaf2, 2, 7.8); open.addLabel('como', 9.2);
-      turn(leaf3, 3, 9.9);
-      open.to({}, { duration: .9 }, 11.1);        // pausa breve en la última página
-    } else {
-      // móvil: la cámara se acerca a cada página para que el texto se lea
-      turn(leaf1, 1, 5.7);
-      cam(6.8, 'Sp', LEFT, .9); open.addLabel('que', 7.7);
-      cam(8.4, 'Sp', RIGHT, .9);
-      turn(leaf2, 2, 9.5);
-      cam(10.6, 'Sp', LEFT, .9);
-      cam(12.2, 'Sp', RIGHT, .9); open.addLabel('como', 13.1);
-      turn(leaf3, 3, 13.8);
-      cam(14.9, 'Sp', LEFT, .9);
-      cam(16.5, 'Sp', RIGHT, .9);
-      open.to({}, { duration: .6 }, 17.4);
-    }
+    turn(leaf1, 1, 5.7); open.addLabel('que', 7.1);
+    turn(leaf2, 2, 7.8); open.addLabel('como', 9.2);
+    turn(leaf3, 3, 9.9);
+    open.to({}, { duration: .9 }, 11.1);        // pausa breve en la última página
 
     /* 3) salida: al soltarse la sección, el libro sube junto con la página (sin huecos) */
     const exit = gsap.fromTo(wrap, { y: NAV / 2 }, {
