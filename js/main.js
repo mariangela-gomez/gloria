@@ -17,15 +17,15 @@ links.addEventListener('click', e => {
 });
 
 /* ---------- Preguntas mayéuticas (todas las tarjetas) ---------- */
-const questions = [
-  '¿Qué crees que sintió Ardillín cuando todos lo miraron distinto?',
-  '¿Qué es lo que más te gusta de ti?',
-  'Si tu enojo fuera un animal, ¿cuál sería? ¿Cómo lo calmarías?',
-  '¿Cuándo te has sentido muy valiente?',
-  '¿Qué le dirías a un amigo que se siente triste?',
-  '¿Qué cosa difícil lograste con paciencia?',
-  '¿Qué pasaría si todos fuéramos iguales?',
-  '¿Cómo cambia el cuento si lo cuentas tú?'
+const questions = [ // una por competencia del programa
+  '¿Qué haces cuando te enojas mucho? ¿Qué te ayuda a calmarte?',
+  '¿Qué sientes cuando algo no te sale? ¿Lo vuelves a intentar?',
+  '¿Qué te da vergüenza? ¿Cómo podrías animarte?',
+  '¿A quién extrañas cuando no está contigo?',
+  '¿Cómo te das cuenta de que un amigo está triste?',
+  '¿Cómo le pides algo a alguien sin gritar?',
+  '¿Qué puedes decir cuando algo de tu cuerpo no quieres que lo toquen?',
+  '¿Cómo podemos jugar todos juntos aunque seamos distintos?'
 ];
 let qi = 0;
 const qCards = $$('.question');
