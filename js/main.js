@@ -87,9 +87,25 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
   const root = document.documentElement;
-  const mm = gsap.matchMedia();
+  if (!location.hash) { ScrollTrigger.clearScrollMemory('manual'); scrollTo(0, 0); }
+  let mm = gsap.matchMedia();
 
-  mm.add(
+  // El libro fijo necesita que la ventana tenga su propio scroll. Si la página está dentro
+  // de un marco que se estira al alto del contenido (algunas vistas previas), no hay scroll
+  // propio: en ese caso se usan las secciones normales.
+  const frameScrolls = () =>
+    innerHeight <= (screen.availHeight || innerHeight) + 80 && root.scrollHeight > innerHeight * 1.5;
+  let lastFrame = frameScrolls();
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      const now = frameScrolls();
+      if (now !== lastFrame) { lastFrame = now; mm.revert(); mm = gsap.matchMedia(); setup(); }
+    }, 200);
+  });
+
+  const setup = () => mm.add(
     { motion: '(prefers-reduced-motion: no-preference)', narrow: '(max-width: 860px)' },
     ctx => {
       const { motion, narrow } = ctx.conditions;
@@ -157,9 +173,8 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: { trigger: '.soon', start: 'top 85%', once: true } });
 
       /* ----- El cuento baja desde el hero y se abre ----- */
-      const tallEnough = root.scrollHeight > innerHeight * 1.5; // descarta marcos sin scroll propio
       let cleanupBook = () => {};
-      if (tallEnough) cleanupBook = initBook(narrow);
+      if (frameScrolls()) cleanupBook = initBook(narrow);
 
       return () => {
         cleanupBook();
@@ -167,6 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
       };
     }
   );
+  setup();
 
   function initBook(narrow) {
     const W = 340, H = 451, NAV = 68; // NAV: alto del menú fijo
@@ -258,20 +274,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* 2) apertura: se fija la sección y el scroll abre el libro y levanta las figuras */
     const S2 = .9;                        // el libro se achica un poco al inclinarse
+    const VH = () => Math.min(innerHeight, 1000); // largo de scroll acotado
     const open = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: {
-        trigger: '.story', start: 'top top', end: () => '+=' + innerHeight * (narrow ? 13 : 9.5),
-        pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
+        trigger: '.story', start: 'top top', end: () => '+=' + VH() * (narrow ? 8 : 5.5),
+        pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true,
         onToggle: self => wrap.classList.toggle('live', self.isActive)
       }
     });
-    const turn = (leaf, i, t) => open
-      .set(fronts[i + 1], { visibility: 'visible' }, t)
-      .to(leaf, { rotationY: -180, z: -zs[i], duration: 1.3 }, t)
-      .set(fronts[i], { visibility: 'hidden' }, t + .65)
-      .set(backs[i], { visibility: 'visible' }, t + .65)
-      .set(i ? backs[i - 1] : {}, { visibility: 'hidden' }, t + 1.3);
+    const turn = (leaf, i, t) => {
+      open
+        .set(fronts[i + 1], { visibility: 'visible' }, t)
+        .to(leaf, { rotationY: -180, z: -zs[i], duration: 1.2 }, t)
+        .set(fronts[i], { visibility: 'hidden' }, t + .6)
+        .set(backs[i], { visibility: 'visible' }, t + .6);
+      if (i) open.set(backs[i - 1], { visibility: 'hidden' }, t + 1.2);
+    };
     // cámara: escala y desplazamiento del libro. El centro de la página derecha es x=0,
     // el lomo es x=s·W/2 y el centro de la página izquierda es x=s·W.
     const cam = (t, s, k, d = 1, y = NAV / 2) =>
@@ -279,60 +298,62 @@ window.addEventListener('DOMContentLoaded', () => {
     const SPREAD = { at: .5 }, LEFT = { at: 1 }, RIGHT = { at: 0 };
 
     open
-      .to('.story__cap', { opacity: 0, x: i => (i ? 40 : -40), duration: .6, ease: 'power1.in' }, .1)
-      .to('.story__hint', { opacity: 0, duration: .3 }, .1);
+      .to('.story__cap', { opacity: 0, x: i => (i ? 40 : -40), duration: .5, ease: 'power1.in' }, 0)
+      .to('.story__hint', { opacity: 0, duration: .3 }, 0);
 
     // tapa: se abre y la cámara muestra el libro completo
-    turn(cover, 0, .3);
-    cam(.3, 'Ss', SPREAD, 1.3);
+    turn(cover, 0, .2);
+    cam(.2, 'Ss', SPREAD, 1.2);
 
     // escena pop-up: el libro se inclina y las figuras se levantan en capas
-    open.fromTo(lean, { rotationX: 0 }, { rotationX: 44, duration: 1, immediateRender: false }, 1.7);
-    cam(1.7, 'Ss', { at: .5, scale: S2 }, 1, NAV / 2 + (narrow ? 20 : 34));
+    open.fromTo(lean, { rotationX: 0 }, { rotationX: 44, duration: .9, immediateRender: false }, 1.4);
+    cam(1.4, 'Ss', { at: .5, scale: S2 }, .9, NAV / 2 + (narrow ? 20 : 34));
     pops.forEach((p, i) => {
-      const t = 2.5 + i * .15;
-      open.to(p, { rotationX: -90, duration: .9, ease: 'back.out(1.6)' }, t);
-      open.fromTo(shadows[i], { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: .9, immediateRender: false }, t);
+      const t = 1.9 + i * .12;
+      open.to(p, { rotationX: -90, duration: .8, ease: 'back.out(1.6)' }, t);
+      open.fromTo(shadows[i], { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: .8, immediateRender: false }, t);
     });
     // las figuras se pliegan y el libro vuelve a quedar plano
     open
-      .to(pops, { rotationX: 0, duration: .7, stagger: { each: .05, from: 'end' }, ease: 'power2.in' }, 5.4)
-      .to(shadows, { opacity: 0, duration: .5 }, 5.6)
-      .to(lean, { rotationX: 0, duration: .9 }, 5.9);
-    cam(5.9, 'Ss', SPREAD, .9);
+      .to(pops, { rotationX: 0, duration: .6, stagger: { each: .04, from: 'end' }, ease: 'power2.in' }, 4.3)
+      .to(shadows, { opacity: 0, duration: .4 }, 4.5)
+      .to(lean, { rotationX: 0, duration: .8 }, 4.7);
+    cam(4.7, 'Ss', SPREAD, .8);
 
-    let end;
     if (!narrow) {
       // escritorio: se ven las dos páginas a la vez
-      turn(leaf1, 1, 7);
-      turn(leaf2, 2, 9.4);
-      turn(leaf3, 3, 11.8);
-      end = 14.7;
+      turn(leaf1, 1, 5.7); open.addLabel('que', 7.1);
+      turn(leaf2, 2, 7.8); open.addLabel('como', 9.2);
+      turn(leaf3, 3, 9.9);
+      open.to({}, { duration: .9 }, 11.1);        // pausa breve en la última página
     } else {
       // móvil: la cámara se acerca a cada página para que el texto se lea
-      turn(leaf1, 1, 7);
-      cam(8.2, 'Sp', LEFT, 1);
-      cam(10, 'Sp', RIGHT, 1);
-      turn(leaf2, 2, 11.8);
-      cam(13, 'Sp', LEFT, 1);
-      cam(14.8, 'Sp', RIGHT, 1);
-      turn(leaf3, 3, 16.6);
-      cam(17.8, 'Sp', LEFT, 1);
-      cam(19.6, 'Sp', RIGHT, 1);
-      end = 21.8;
+      turn(leaf1, 1, 5.7);
+      cam(6.8, 'Sp', LEFT, .9); open.addLabel('que', 7.7);
+      cam(8.4, 'Sp', RIGHT, .9);
+      turn(leaf2, 2, 9.5);
+      cam(10.6, 'Sp', LEFT, .9);
+      cam(12.2, 'Sp', RIGHT, .9); open.addLabel('como', 13.1);
+      turn(leaf3, 3, 13.8);
+      cam(14.9, 'Sp', LEFT, .9);
+      cam(16.5, 'Sp', RIGHT, .9);
+      open.to({}, { duration: .6 }, 17.4);
     }
 
-    // despedida
-    open
-      .to(wrap, { opacity: 0, y: -90, duration: 1, ease: 'power2.in' }, end)
-      .to({}, { duration: .2 });
+    /* 3) salida: al soltarse la sección, el libro sube junto con la página (sin huecos) */
+    const exit = gsap.fromTo(wrap, { y: NAV / 2 }, {
+      y: () => NAV / 2 - innerHeight * 1.05, ease: 'none', immediateRender: false,
+      scrollTrigger: {
+        trigger: '.story', start: () => open.scrollTrigger.end, end: () => open.scrollTrigger.end + innerHeight * 1.05,
+        scrub: true, invalidateOnRefresh: true
+      }
+    });
 
     // enlaces del menú: llevan a la página correspondiente del libro
-    const navHandlers = $$('[data-p]').map(a => {
+    const navHandlers = $$('[data-label]').map(a => {
       const h = e => {
         e.preventDefault();
-        const st = open.scrollTrigger;
-        scrollTo({ top: st.start + (st.end - st.start) * parseFloat(a.dataset.p), behavior: 'smooth' });
+        scrollTo({ top: open.scrollTrigger.labelToScroll(a.dataset.label) + 2, behavior: 'smooth' });
       };
       a.addEventListener('click', h);
       return [a, h];
