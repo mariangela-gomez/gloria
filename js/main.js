@@ -47,6 +47,30 @@ qCards.forEach(c => {
   });
 });
 
+/* ---------- Pestañas de competencias ---------- */
+const tabs = $$('.skills__tab');
+const selectTab = tab => {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on);
+    t.tabIndex = on ? 0 : -1;
+    $('#' + t.getAttribute('aria-controls')).hidden = !on;
+  });
+  const panel = $('#' + tab.getAttribute('aria-controls'));
+  if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.fromTo($$('.skill', panel), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .45, stagger: .08, ease: 'power2.out' });
+    gsap.fromTo($$('.chips li', panel), { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .35, stagger: .025, delay: .1, ease: 'back.out(2)' });
+  }
+};
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => selectTab(t));
+  t.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    next.focus(); selectTab(next);
+  });
+});
+
 /* ---------- Formulario (solo front-end: conectar a un servicio de email) ---------- */
 const form = $('#signup');
 const msg = $('#signupMsg');
@@ -171,6 +195,14 @@ window.addEventListener('DOMContentLoaded', () => {
       gsap.from('.soon__item', {
         y: 40, opacity: 0, rotation: () => gsap.utils.random(-4, 4), duration: .8, stagger: .15, ease: 'back.out(1.6)',
         scrollTrigger: { trigger: '.soon', start: 'top 85%', once: true } });
+
+      // programa: la línea de edades se llena y los puntos aparecen
+      gsap.fromTo('.ages__fill', { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'power2.inOut',
+        scrollTrigger: { trigger: '.ages', start: 'top 80%', once: true } });
+      gsap.from('.ages__marks li', { scale: 0, opacity: 0, duration: .5, stagger: .18, ease: 'back.out(2.5)', delay: .2,
+        scrollTrigger: { trigger: '.ages', start: 'top 80%', once: true } });
+      gsap.from('.skills__panel:not([hidden]) .chips li', { scale: .7, opacity: 0, duration: .35, stagger: .03, ease: 'back.out(2)',
+        scrollTrigger: { trigger: '.skills', start: 'top 75%', once: true } });
 
       /* ----- El cuento baja desde el hero y se abre ----- */
       let cleanupBook = () => {};
