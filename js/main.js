@@ -117,8 +117,11 @@ window.addEventListener('DOMContentLoaded', () => {
   // El libro fijo necesita que la ventana tenga su propio scroll. Si la página está dentro
   // de un marco que se estira al alto del contenido (algunas vistas previas), no hay scroll
   // propio: en ese caso se usan las secciones normales.
-  const frameScrolls = () =>
-    innerHeight <= (screen.availHeight || innerHeight) + 80 && root.scrollHeight > innerHeight * 1.5;
+  // Solo aplica dentro de un iframe: abierta directamente en el navegador siempre hay scroll
+  // propio (con el zoom reducido la ventana puede "medir" más que la pantalla).
+  const inFrame = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+  const frameScrolls = () => !inFrame ||
+    (innerHeight <= (screen.availHeight || innerHeight) + 80 && root.scrollHeight > innerHeight * 1.5);
   let lastFrame = frameScrolls();
   let resizeT;
   window.addEventListener('resize', () => {
