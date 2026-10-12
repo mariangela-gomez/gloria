@@ -289,7 +289,7 @@ window.addEventListener('DOMContentLoaded', () => {
     /* 1) vuelo: del hero al centro de la pantalla */
     const fly = gsap.timeline({
       scrollTrigger: {
-        trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .7, invalidateOnRefresh: true,
+        trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true, // sin retraso: si no, al saltar pisa la posición del libro abierto
         onRefreshInit: measure,
         onUpdate: self => {
           inHero = self.progress < .03;
