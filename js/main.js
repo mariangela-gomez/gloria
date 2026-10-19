@@ -227,19 +227,30 @@ window.addEventListener('DOMContentLoaded', () => {
   function initBox(narrow) {
     const sec = $('.boxsec');
     const inn = $('.box3d__in');
-    const bh = parseFloat(getComputedStyle(inn).getPropertyValue('--bh')) || 150;
-    gsap.set(inn, { '--open': '0deg', '--by': (bh / 2 - 18) + 'px', '--bx': '90deg', '--bz': '0deg' });
+    const cs = getComputedStyle(inn);
+    const bh = parseFloat(cs.getPropertyValue('--bh')) || 150;
+    const t = parseFloat(getComputedStyle($('.b3d--box')).getPropertyValue('--t')) || 34;
+    const rest = { '--open': '0deg', '--by': (bh / 2 - t / 2 - 3) + 'px', '--bx': '90deg', '--bry': '0deg', '--bz': '0deg' };
+    gsap.set(inn, rest);
     const tl = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: narrow
-        ? { trigger: sec, start: 'top 75%', end: 'bottom 45%', scrub: .6 }
-        : { trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 1.6, pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true }
+        ? { trigger: sec, start: 'top 70%', end: 'bottom 40%', scrub: .6 }
+        : { trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 1.8, pin: true, scrub: .7, anticipatePin: 1, invalidateOnRefresh: true }
     });
-    tl.fromTo('.box3d', { y: 80, rotation: -4 }, { y: 0, rotation: 0, duration: 1 }, 0)
-      .fromTo('.boxsec__title', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: .8 }, .2)
-      .to(inn, { '--open': '118deg', duration: 1.4 }, .8)
-      .to(inn, { '--by': (-bh * 1.25) + 'px', '--bx': '-8deg', '--bz': '-6deg', duration: 1.6, ease: 'back.out(1.2)' }, 1.6)
-      .fromTo('.boxsec__note', { opacity: 0, scale: .6, rotation: -20 }, { opacity: 1, scale: 1, rotation: -8, duration: .6, ease: 'back.out(2)' }, 2.4)
+    tl.fromTo('.box3d', { y: 90, rotation: -3 }, { y: 0, rotation: 0, duration: 1 }, 0)
+      .fromTo('.boxsec__copy > *', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .15 }, .1)
+      .fromTo('.box3d__shadow', { scale: .8, opacity: .6 }, { scale: 1, opacity: 1, duration: 1 }, 0)
+      // la tapa se levanta con un pequeño rebote
+      .to(inn, { '--open': '112deg', duration: 1.3, ease: 'back.out(1.4)' }, .9)
+      // el libro sale de la caja, se endereza y gira para mostrar su lomo
+      .to(inn, { '--by': (-bh * 1.4) + 'px', duration: 1.4, ease: 'power3.out' }, 1.8)
+      .to(inn, { '--bx': '-4deg', duration: 1.2, ease: 'power2.inOut' }, 2.0)
+      .to(inn, { '--bry': '-16deg', '--bz': '-4deg', duration: 1.2, ease: 'power2.inOut' }, 2.3)
+      .fromTo('.boxsec__note', { opacity: 0, scale: .6, rotation: -20 }, { opacity: 1, scale: 1, rotation: -8, duration: .6, ease: 'back.out(2)' }, 2.8)
       .to({}, { duration: .6 });
+    // flotación suave del libro una vez fuera
+    gsap.to('.b3d--box .b3d__in', { y: -10, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
   }
 });
