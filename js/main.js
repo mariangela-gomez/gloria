@@ -71,6 +71,32 @@ tabs.forEach((t, i) => {
   });
 });
 
+/* ---------- Catálogo: flechas y arrastre ---------- */
+const shelf = $('#shelf');
+if (shelf) {
+  const step = () => ($('.bk', shelf)?.offsetWidth || 280) + 22;
+  $$('.shelf__nav .round').forEach(b => b.addEventListener('click', () =>
+    shelf.scrollBy({ left: step() * +b.dataset.dir, behavior: 'smooth' })));
+  let down = null;
+  shelf.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse') return;
+    down = { x: e.clientX, left: shelf.scrollLeft, moved: false };
+  });
+  window.addEventListener('pointermove', e => {
+    if (!down) return;
+    const dx = e.clientX - down.x;
+    if (Math.abs(dx) > 4) { down.moved = true; shelf.classList.add('drag'); }
+    shelf.scrollLeft = down.left - dx;
+  });
+  window.addEventListener('pointerup', () => { down = null; shelf.classList.remove('drag'); });
+}
+
+/* ---------- Preguntas frecuentes: apertura suave ---------- */
+$$('.qa').forEach(d => d.addEventListener('toggle', () => {
+  if (d.open && window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    gsap.from($('.qa__a', d), { height: 0, opacity: 0, duration: .35, ease: 'power2.out', clearProps: 'height' });
+}));
+
 /* ---------- Formulario (solo front-end: conectar a un servicio de email) ---------- */
 const form = $('#signup');
 const msg = $('#signupMsg');
@@ -95,7 +121,7 @@ if (matchMedia('(hover:hover)').matches) {
     const r = stage.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - .5;
     const y = (e.clientY - r.top) / r.height - .5;
-    staticBook.style.transform = `rotateY(${x * 22 - 6}deg) rotateX(${4 - y * 14}deg) scale(1.03)`;
+    staticBook.style.transform = `perspective(1200px) rotateY(${x * 22 - 6}deg) rotateX(${4 - y * 14}deg) scale(1.03)`;
     staticBook.style.animationPlayState = 'paused';
   });
   stage.addEventListener('pointerleave', () => {
@@ -140,6 +166,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
       root.classList.add('js-anim');
 
+      /* ----- El cuento baja desde el hero y se abre ----- */
+      // Se crea primero: ScrollTrigger calcula las posiciones en orden de creación, y la
+      // sección fijada desplaza todo lo que viene después.
+      let cleanupBook = () => {};
+      // solo en pantallas anchas: en el celular el libro fijo taparía el texto al bajar
+      if (!narrow && frameScrolls()) cleanupBook = initBook();
+
+      // Estado final explícito: un from() con ScrollTrigger puede tomar como final su propio
+      // estado inicial si la página se recalcula antes de que arranque (pasa con la sección fija).
+      const RESET = { x: 0, y: 0, xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1 };
+      const fromIn = (t, v) => {
+        const f = {}, to = {};
+        for (const k in v) { if (k in RESET) { f[k] = v[k]; to[k] = RESET[k]; } else to[k] = v[k]; }
+        return gsap.fromTo(t, f, to);
+      };
+
       /* ----- Entrada del hero ----- */
       const title = $('.hi-title');
       // separa el título en palabras (conservando <em>)
@@ -158,59 +200,84 @@ window.addEventListener('DOMContentLoaded', () => {
       };
       if (!title.dataset.split) { wrapWords(title); title.dataset.split = '1'; }
 
-      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      intro
-        .from('.hi.pill', { y: 20, scale: .8, duration: .6, clearProps: 'transform' }, 0)
-        .fromTo('.hi-title .w', { y: 46, rotation: 4, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: .8, stagger: .07 }, .1)
-        .fromTo('.hi.pill', { opacity: 0 }, { opacity: 1, duration: .5 }, 0)
-        .fromTo('.hi.lead', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .55)
-        .fromTo('.hi.hero__cta', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .7)
-        .fromTo('.hi.hero__facts li', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .1 }, .85)
-        .set('.hi.hero__facts', { opacity: 1 }, .85);
+      const draw = $('.hand--hero .draw');
+      if (draw) { const L = draw.getTotalLength(); gsap.set(draw, { strokeDasharray: L, strokeDashoffset: L }); }
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .fromTo('.hi.pill', { y: 20, scale: .8, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: .6 }, 0)
+        .fromTo('.hi-title .w', { yPercent: 70, rotation: 6, opacity: 0 }, { yPercent: 0, rotation: 0, opacity: 1, duration: .8, stagger: .06, ease: 'back.out(1.7)' }, .1)
+        .fromTo('.hi.lead', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .6)
+        .fromTo('.hi.hero__cta', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .7 }, .75)
+        .set('.hi.hero__facts', { opacity: 1 }, .9)
+        .fromTo('.hi.hero__facts li', { y: 20, scale: .8, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: .5, stagger: .08, ease: 'back.out(2)' }, .9)
+        .fromTo('.hand--hero', { opacity: 0, scale: .6, rotation: -20 }, { opacity: 1, scale: 1, rotation: -8, duration: .6, ease: 'back.out(2)' }, 1.4)
+        .to(draw || {}, { strokeDashoffset: 0, duration: .7, ease: 'power2.inOut' }, 1.7);
 
-      gsap.to('.cloud', { y: -30, duration: 5, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: 1.2 });
+      // formas orgánicas que respiran
+      gsap.to('.blob--1', { rotation: 360, duration: 80, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+      gsap.to('.blob--2', { rotation: -360, scale: 1.12, duration: 60, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
 
-      // colinas con parallax suave
-      gsap.to('.hills', { y: 50, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-
-      /* ----- Revelados al hacer scroll ----- */
-      gsap.set('.reveal', { opacity: 0, y: 44 });
-      ScrollTrigger.batch('.reveal', {
-        start: 'top 90%',
-        once: true,
-        onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: .9, stagger: .12, ease: 'power3.out', overwrite: true })
+      /* ----- Bloques de color: entran como páginas que se apilan ----- */
+      $$('.slab').forEach(el => {
+        if (el.matches('.hero, .story')) return;
+        gsap.fromTo(el, { scale: .93, y: 60, borderRadius: 90 }, { scale: 1, y: 0, borderRadius: getComputedStyle(el).borderTopLeftRadius, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 55%', scrub: .6 } });
       });
 
-      gsap.fromTo('.feature__cover',
-        { rotation: -14, y: 70, scale: .85 },
-        { rotation: -4, y: 0, scale: 1, ease: 'none',
-          scrollTrigger: { trigger: '#cuento', start: 'top 90%', end: 'center 55%', scrub: .8 } });
-      gsap.from('.feature__copy > *', {
-        y: 36, opacity: 0, duration: .8, stagger: .12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.feature__copy', start: 'top 80%', once: true } });
-      gsap.from('.ticks li', {
-        x: -24, opacity: 0, duration: .6, stagger: .15, ease: 'power2.out',
-        scrollTrigger: { trigger: '.ticks', start: 'top 85%', once: true } });
-      gsap.from('.author__badge', {
-        scale: 0, rotation: -40, duration: 1, ease: 'elastic.out(1,.55)',
-        scrollTrigger: { trigger: '.author', start: 'top 80%', once: true } });
-      gsap.from('.soon__item', {
-        y: 40, opacity: 0, rotation: () => gsap.utils.random(-4, 4), duration: .8, stagger: .15, ease: 'back.out(1.6)',
-        scrollTrigger: { trigger: '.soon', start: 'top 85%', once: true } });
+      /* ----- Revelados genéricos ----- */
+      gsap.set('.reveal', { opacity: 0, y: 44 });
+      ScrollTrigger.batch('.reveal', {
+        start: 'top 90%', once: true,
+        onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: .9, stagger: .1, ease: 'power3.out', overwrite: true })
+      });
+      $$('.big').forEach(h => fromIn(h, { y: 50, opacity: 0, duration: .9, ease: 'power3.out',
+        scrollTrigger: { trigger: h, start: 'top 88%', toggleActions: 'play none none none' } }));
+      $$('.hand:not(.hi)').forEach(h => fromIn(h, { opacity: 0, scale: .7, rotation: -14, duration: .7, ease: 'back.out(2)',
+        scrollTrigger: { trigger: h, start: 'top 90%', toggleActions: 'play none none none' } }));
 
-      // programa: la línea de edades se llena y los puntos aparecen
+      /* ----- Catálogo: las tarjetas llegan deslizándose ----- */
+      fromIn('.bk', { x: 160, rotation: 6, opacity: 0, duration: .9, stagger: .1, ease: 'back.out(1.4)',
+        scrollTrigger: { trigger: '.shelf__track', start: 'top 85%', toggleActions: 'play none none none' } });
+
+      /* ----- Pasos: el mazo de tarjetas se abre ----- */
+      const scards = $$('.scard');
+      const rest = narrow ? [{ r: -2, y: 0 }, { r: 1.5, y: 0 }, { r: -1, y: 0 }] : [{ r: -3, y: 0 }, { r: 2, y: 18 }, { r: -1.5, y: 0 }];
+      scards.forEach((c, i) => gsap.fromTo(c,
+        { xPercent: narrow ? 0 : (1 - i) * 100, y: narrow ? 80 : 60 + i * 10, rotation: (i - 1) * 12, scale: .9 },
+        { xPercent: 0, y: rest[i].y, rotation: rest[i].r, scale: 1, ease: 'power2.out',
+          scrollTrigger: { trigger: narrow ? c : '.cards3', start: 'top 92%', end: narrow ? 'top 55%' : 'top 35%', scrub: .7 } }));
+
+      /* ----- Palabras gigantes: se encienden al pasar por el centro ----- */
+      $$('.words__list li').forEach(li => ScrollTrigger.create({
+        trigger: li, start: 'top 62%', end: 'bottom 38%', toggleClass: 'on'
+      }));
+
+      /* ----- Por qué Cumay: las pastillas caen y rebotan ----- */
+      const CHIP_R = [-6, 4, -2, 7, -4, 3]; // mismas inclinaciones que en el CSS
+      gsap.fromTo('.chip', { y: -420, rotation: () => gsap.utils.random(-50, 50), opacity: 0 },
+        { y: 0, rotation: i => CHIP_R[i % CHIP_R.length], opacity: 1, duration: 1.3, stagger: .12, ease: 'bounce.out',
+          scrollTrigger: { trigger: '.chips-pile', start: 'top 80%', toggleActions: 'play none none none' } });
+
+      /* ----- Ardillín y autora ----- */
+      gsap.fromTo('.feature__cover', { rotation: -16, y: 80, scale: .85 }, { rotation: -5, y: 0, scale: 1, ease: 'none',
+        scrollTrigger: { trigger: '#cuento', start: 'top 90%', end: 'center 55%', scrub: .8 } });
+      fromIn('.badge', { scale: 0, duration: 1, ease: 'elastic.out(1,.5)', scrollTrigger: { trigger: '.feature__art', start: 'top 75%', toggleActions: 'play none none none' } });
+      fromIn('.ticks li', { x: -24, opacity: 0, duration: .6, stagger: .15, ease: 'power2.out',
+        scrollTrigger: { trigger: '.ticks', start: 'top 85%', toggleActions: 'play none none none' } });
+      fromIn('.author__badge', { scale: 0, rotation: -40, duration: 1, ease: 'elastic.out(1,.55)',
+        scrollTrigger: { trigger: '.author', start: 'top 80%', toggleActions: 'play none none none' } });
+      fromIn('.qa', { y: 30, opacity: 0, duration: .6, stagger: .08, ease: 'power2.out',
+        scrollTrigger: { trigger: '.faq__list', start: 'top 85%', toggleActions: 'play none none none' } });
+
+      /* ----- Programa ----- */
       gsap.fromTo('.ages__fill', { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'power2.inOut',
-        scrollTrigger: { trigger: '.ages', start: 'top 80%', once: true } });
-      gsap.from('.ages__marks li', { scale: 0, opacity: 0, duration: .5, stagger: .18, ease: 'back.out(2.5)', delay: .2,
-        scrollTrigger: { trigger: '.ages', start: 'top 80%', once: true } });
-      gsap.from('.skills__panel:not([hidden]) .chips li', { scale: .7, opacity: 0, duration: .35, stagger: .03, ease: 'back.out(2)',
-        scrollTrigger: { trigger: '.skills', start: 'top 75%', once: true } });
+        scrollTrigger: { trigger: '.ages', start: 'top 80%', toggleActions: 'play none none none' } });
+      fromIn('.ages__marks li', { scale: 0, opacity: 0, duration: .5, stagger: .18, ease: 'back.out(2.5)', delay: .2,
+        scrollTrigger: { trigger: '.ages', start: 'top 80%', toggleActions: 'play none none none' } });
+      fromIn('.pillar', { y: 60, rotation: () => gsap.utils.random(-6, 6), opacity: 0, duration: .8, stagger: .08, ease: 'back.out(1.5)',
+        scrollTrigger: { trigger: '.pillars__grid', start: 'top 85%', toggleActions: 'play none none none' } });
+      fromIn('.skills__panel:not([hidden]) .chips li', { scale: .7, opacity: 0, duration: .35, stagger: .03, ease: 'back.out(2)',
+        scrollTrigger: { trigger: '.skills', start: 'top 75%', toggleActions: 'play none none none' } });
 
-      /* ----- El cuento baja desde el hero y se abre ----- */
-      let cleanupBook = () => {};
-      // solo en pantallas anchas: en el celular el libro fijo taparía el texto al bajar
-      if (!narrow && frameScrolls()) cleanupBook = initBook();
 
       return () => {
         cleanupBook();
