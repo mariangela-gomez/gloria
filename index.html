@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cumay · Cuentos mayéuticos</title>
-  <meta name="description" content="Cumay son cuentos mayéuticos en papel, creados por una psicóloga: libros físicos e interactivos que alejan a los niños de las pantallas y refuerzan la autoestima y la inteligencia emocional.">
+  <meta name="description" content="Cumay son cuentos mayéuticos en papel, creados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional. Libros físicos e interactivos, sin pantallas.">
   <meta property="og:title" content="Cumay · Cuentos mayéuticos">
-  <meta property="og:description" content="Libros de papel para abrir, tocar, preguntar y sentir. Sin pantallas.">
+  <meta property="og:description" content="Cuentos de papel para abrir, tocar, preguntar y sentir. Para niños de 3 a 8 años.">
   <meta property="og:image" content="images/ardillin-portada.jpg">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -49,7 +49,7 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="top">
-  <div class="wrap nav__in">
+  <div class="nav__in">
     <a href="#top" class="logo" aria-label="Cumay, cuentos mayéuticos">
       <svg class="logo__mark" viewBox="0 0 72 66"><use href="#mark"/></svg>
       <span class="logo__text">
@@ -57,31 +57,32 @@
         <span class="logo__tag">cuentos mayéuticos</span>
       </span>
     </a>
-    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     <nav class="nav__links" aria-label="Principal">
       <a href="#mayeutica" data-label="que">¿Qué es?</a>
-      <a href="#como" data-label="como">Cómo se lee</a>
+      <a href="#cuentos">Cuentos</a>
+      <a href="#como">Cómo se lee</a>
       <a href="#programa">El programa</a>
-      <a href="#cuento">Ardillín</a>
-      <a href="#autora">La autora</a>
-      <a href="#contacto" class="btn btn--small">Quiero saber más</a>
+      <a href="#faq">Preguntas</a>
     </nav>
+    <a href="#contacto" class="btn btn--sm nav__cta"><span>Quiero saber más</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
 
 <main>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="cloud cloud--1"></div><div class="cloud cloud--2"></div><div class="cloud cloud--3"></div>
+<section class="hero slab slab--sun">
+  <svg class="blob blob--1" viewBox="0 0 600 600" aria-hidden="true"><path d="M421 92c64 45 118 121 112 196-6 76-73 150-151 186-78 37-167 35-235-6S29 335 41 254c13-81 81-150 157-182 75-31 159-25 223 20z"/></svg>
+  <svg class="blob blob--2" viewBox="0 0 600 600" aria-hidden="true"><path d="M470 140c40 70 40 170-10 240s-150 110-240 90S60 380 60 290 120 110 210 80s220-10 260 60z"/></svg>
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="pill hi">📖 Libros de papel · Sin pantallas</p>
       <h1 class="hi-title">Cuentos que se <em>abren</em>, se <em>tocan</em> y se <em>sienten</em>.</h1>
-      <p class="lead hi">Cumay crea libros físicos e interactivos, diseñados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional y lleven lo aprendido a su vida diaria. Con un mensaje positivo en cada página.</p>
+      <p class="lead hi">Cumay crea libros físicos e interactivos, diseñados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional y lleven lo aprendido a su vida diaria.</p>
       <div class="hero__cta hi">
-        <a href="#cuento" class="btn">Conoce a Ardillín</a>
-        <a href="#como" class="btn btn--ghost" data-label="como">Cómo funciona</a>
+        <a href="#cuentos" class="btn"><span>Ver los cuentos</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+        <a href="#como" class="btn btn--ghost"><span>Cómo funciona</span></a>
       </div>
       <ul class="hero__facts hi">
         <li><strong>3–8</strong> años</li>
@@ -91,6 +92,9 @@
     </div>
 
     <div class="hero__book">
+      <p class="hand hand--hero hi" aria-hidden="true">¡hecho para<br>tocar y preguntar!
+        <svg viewBox="0 0 90 60"><path class="draw" d="M6 8c26 2 52 14 66 40M72 48l-14-2M72 48l2-14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </p>
       <div class="book-slot" id="bookSlot">
         <!-- Versión estática (móvil / sin animaciones). En escritorio la reemplaza el libro animado. -->
         <div class="book" id="book">
@@ -101,25 +105,12 @@
       </div>
     </div>
   </div>
-
-  <div class="hills" aria-hidden="true">
-    <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-      <path d="M0 120C240 40 420 40 640 100s420 70 800-30v150H0z" fill="#8fcf5a"/>
-      <path d="M0 160c200-60 420-60 680-10s480 40 760-20v90H0z" fill="#6db33f"/>
-    </svg>
-    <svg class="hills__trees" viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <use href="#tree" x="120" y="10" width="34" height="60" color="#4f9a2f"/>
-      <use href="#tree" x="190" y="25" width="26" height="46" color="#5aa636"/>
-      <use href="#tree" x="1180" y="14" width="34" height="60" color="#4f9a2f"/>
-      <use href="#tree" x="1250" y="28" width="26" height="46" color="#5aa636"/>
-    </svg>
-  </div>
 </section>
 
 <!-- ============ EL CUENTO SE ABRE (solo escritorio con animaciones) ============ -->
-<section class="story" id="story" aria-label="Qué es un cuento Cumay">
+<section class="story slab slab--sky" id="story" aria-label="Qué es un cuento Cumay">
   <div class="story__cap story__cap--l">
-    <p class="eyebrow eyebrow--light">Sigue bajando</p>
+    <p class="hand">sigue bajando…</p>
     <h2>Abre el cuento</h2>
   </div>
   <div class="story__cap story__cap--r">
@@ -128,14 +119,13 @@
   <div class="story__hint" aria-hidden="true">↓</div>
 </section>
 
-<!-- ============ MAYÉUTICA ============ -->
-<section class="section section--green static-only" id="mayeutica">
+<!-- ============ MAYÉUTICA (móvil; en escritorio está dentro del libro) ============ -->
+<section class="section slab slab--leaf static-only" id="mayeutica">
   <div class="wrap split">
     <div>
-      <p class="eyebrow">¿Qué es un cuento mayéutico?</p>
+      <p class="hand">¿qué es un cuento mayéutico?</p>
       <h2>Los mejores finales los escriben los niños.</h2>
       <p>La <strong>mayéutica</strong> es el arte de “dar a luz” ideas a través de preguntas. Un cuento mayéutico no entrega todas las respuestas: <strong>acompaña al niño a encontrarlas por sí mismo</strong>.</p>
-      <p>Cada cuento Cumay incluye momentos para detenerse, mirar, tocar, preguntar y conversar en familia. Así la lectura se vuelve un juego compartido y no una pantalla más.</p>
     </div>
     <div>
       <div class="question" role="button" tabindex="0" aria-label="Toca para ver otra pregunta">
@@ -147,138 +137,203 @@
   </div>
 </section>
 
-<!-- ============ PILARES ============ -->
-<section class="section static-only">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">Lo que cada cuento deja</p>
-      <h2>Un mensaje positivo en cada página</h2>
+<!-- ============ CATÁLOGO ============ -->
+<section class="section shelf" id="cuentos">
+  <div class="wrap shelf__head">
+    <div>
+      <p class="hand hand--tilt">un cuento para<br>cada emoción</p>
+      <h2 class="big">Nuestros cuentos</h2>
+      <p class="shelf__lead">Cada historia trabaja una competencia socioemocional, con partes para tocar y preguntas para conversar.</p>
     </div>
-    <div class="cards">
-      <article class="card reveal" style="--c:#f2677d">
-        <div class="card__ico">♥</div>
-        <h3>Autorregulación</h3>
-        <p>Regular el enojo, tolerar la frustración, superar la timidez y manejar la ansiedad por separación.</p>
-      </article>
-      <article class="card reveal" style="--c:#3fb0c4">
-        <div class="card__ico">☺</div>
-        <h3>Habilidades sociales</h3>
-        <p>Empatía, comunicación asertiva, escucha activa, flexibilidad y trabajo en equipo.</p>
-      </article>
-      <article class="card reveal" style="--c:#f2b43c">
-        <div class="card__ico">✋</div>
-        <h3>Convivencia y respeto</h3>
-        <p>Límites individuales, respeto al cuerpo, resolución de conflictos, inclusión y diversidad.</p>
-      </article>
-      <article class="card reveal" style="--c:#6db33f">
-        <div class="card__ico">👨‍👩‍👧</div>
-        <h3>Escuela y hogar</h3>
-        <p>El cuento conecta lo que se vive en clase y en casa, para un entorno seguro y predecible.</p>
-      </article>
+    <div class="shelf__nav">
+      <button class="round" data-dir="-1" aria-label="Cuentos anteriores"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="round" data-dir="1" aria-label="Más cuentos"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
+  </div>
+  <div class="shelf__track" id="shelf" tabindex="0" aria-label="Catálogo de cuentos">
+    <article class="bk bk--leaf">
+      <div class="bk__cover"><img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve" loading="lazy"></div>
+      <h3 class="bk__title">Ardillín</h3>
+      <p class="bk__text">El primer cuento de Cumay, escrito por Gloria Carrasco.</p>
+      <ul class="bk__tags"><li>Primer cuento</li><li>3 a 8 años</li></ul>
+    </article>
+    <article class="bk bk--sun">
+      <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
+      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Tito y el volcán de enojo">
+  <defs><linearGradient id="g1613" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a3d"/><stop offset="1" stop-color="#ffc93c"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#g1613)"/>
+  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
+  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#c25a2a"/>
+  
+  <path d="M112 300l38-110h26l40 110z" fill="#6e3226"/>
+  <path d="M150 190c4-14 18-16 26 0-8 10-18 10-26 0z" fill="#ff3b30"/>
+  <path d="M157 200c-3 14-6 22-10 30M170 198c3 12 2 20 0 28" stroke="#ff3b30" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g fill="#fff" opacity=".9"><circle cx="150" cy="160" r="12"/><circle cx="166" cy="150" r="15"/><circle cx="184" cy="162" r="11"/></g>
+  <g transform="translate(70 196)">
+    <circle cx="18" cy="22" r="17" fill="#a8673a" stroke="#fff" stroke-width="4" paint-order="stroke"/><circle cx="102" cy="22" r="17" fill="#a8673a" stroke="#fff" stroke-width="4" paint-order="stroke"/>
+    <circle cx="18" cy="22" r="8" fill="#e9b07a"/><circle cx="102" cy="22" r="8" fill="#e9b07a"/>
+    <ellipse cx="60" cy="118" rx="54" ry="48" fill="#a8673a" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+    <ellipse cx="60" cy="126" rx="30" ry="30" fill="#e9c08f"/>
+    <circle cx="60" cy="58" r="46" fill="#b5713f" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+    <circle cx="42" cy="52" r="7" fill="#1d1a24"/><circle cx="78" cy="52" r="7" fill="#1d1a24"/>
+  <circle cx="44.5" cy="49.5" r="2.4" fill="#fff"/><circle cx="80.5" cy="49.5" r="2.4" fill="#fff"/>
+    <path d="M32 38l16 6M88 38l-16 6" stroke="#5a2e15" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="60" cy="74" rx="18" ry="13" fill="#e9c08f"/><ellipse cx="60" cy="68" rx="7" ry="5" fill="#3a1d10"/>
+    <path d="M52 80q8-5 16 0" stroke="#3a1d10" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="30" cy="70" r="7" fill="#ff8c8c" opacity=".7"/><circle cx="90" cy="70" r="7" fill="#ff8c8c" opacity=".7"/>
+  </g>
+  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#3a1d10" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Tito y el volcán</text>
+  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#3a1d10">de enojo</text>
+  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
+  <use href="#mark" x="246" y="356" width="38" height="35"/>
+</svg></div>
+      <h3 class="bk__title">Tito y el volcán de enojo</h3>
+      <p class="bk__text">Cuando el enojo sube como lava, Tito aprende a respirar hasta que se enfría.</p>
+      <ul class="bk__tags"><li>Regulación del enojo</li><li>3 a 5 años</li></ul>
+    </article>
+    <article class="bk bk--lilac">
+      <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
+      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de ¿Vuelves pronto? una historia de Nube">
+  <defs><linearGradient id="g1706" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9b86ff"/><stop offset="1" stop-color="#ffd6f1"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#g1706)"/>
+  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
+  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#d99be8"/>
+  
+  <circle cx="232" cy="128" r="26" fill="#fff6c9"/><circle cx="244" cy="120" r="24" fill="#a796ff"/>
+  <g fill="#fff6c9"><circle cx="60" cy="130" r="3"/><circle cx="90" cy="160" r="2"/><circle cx="210" cy="190" r="2.5"/></g>
+  <rect x="186" y="222" width="74" height="96" rx="8" fill="#ffb347" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+  <path d="M180 226l43-34 43 34z" fill="#e8264a" stroke="#fff" stroke-width="5" paint-order="stroke" stroke-linejoin="round"/>
+  <rect x="210" y="266" width="26" height="52" rx="4" fill="#7a3b2e"/>
+  <g transform="translate(46 160)">
+    <ellipse cx="44" cy="22" rx="13" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="4" paint-order="stroke" transform="rotate(-10 44 22)"/>
+    <ellipse cx="86" cy="22" rx="13" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="4" paint-order="stroke" transform="rotate(12 86 22)"/>
+    <ellipse cx="44" cy="22" rx="6" ry="28" fill="#ffc2dc" transform="rotate(-10 44 22)"/><ellipse cx="86" cy="22" rx="6" ry="28" fill="#ffc2dc" transform="rotate(12 86 22)"/>
+    <ellipse cx="66" cy="132" rx="46" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+    <circle cx="66" cy="86" r="40" fill="#fbf9ff" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+    <circle cx="52" cy="84" r="6.5" fill="#1d1a24"/><circle cx="80" cy="84" r="6.5" fill="#1d1a24"/>
+  <circle cx="54.5" cy="81.5" r="2.3" fill="#fff"/><circle cx="82.5" cy="81.5" r="2.3" fill="#fff"/>
+    <ellipse cx="66" cy="100" rx="5" ry="4" fill="#ff8fb8"/>
+    <path d="M60 108q6 4 12 0" stroke="#7a5a8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="42" cy="100" r="6" fill="#ffb3cf"/><circle cx="90" cy="100" r="6" fill="#ffb3cf"/>
+    <path d="M66 150c-10-8-18-12-18-20 0-5 4-8 8-8 4 0 7 3 10 7 3-4 6-7 10-7 4 0 8 3 8 8 0 8-8 12-18 20z" fill="#e8264a" stroke="#fff" stroke-width="3" paint-order="stroke"/>
+  </g>
+  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#4a2a6b" stroke-width="7" paint-order="stroke" stroke-linejoin="round">¿Vuelves pronto?</text>
+  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#4a2a6b">una historia de Nube</text>
+  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
+  <use href="#mark" x="246" y="356" width="38" height="35"/>
+</svg></div>
+      <h3 class="bk__title">¿Vuelves pronto?</h3>
+      <p class="bk__text">Nube se queda en la escuela por primera vez. ¿Y si mamá no vuelve?</p>
+      <ul class="bk__tags"><li>Ansiedad por separación</li><li>3 a 5 años</li></ul>
+    </article>
+    <article class="bk bk--sky">
+      <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
+      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Pipo sale de su caparazón">
+  <defs><linearGradient id="g861" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fd6e6"/><stop offset="1" stop-color="#d6f7fa"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#g861)"/>
+  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
+  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#7cc04a"/>
+  
+  <g fill="#fff" opacity=".9"><ellipse cx="70" cy="150" rx="34" ry="14"/><ellipse cx="226" cy="122" rx="28" ry="11"/></g>
+  <circle cx="64" cy="300" r="9" fill="#ff7ab8"/><circle cx="64" cy="300" r="3.5" fill="#ffd24a"/>
+  <circle cx="246" cy="296" r="8" fill="#ffd24a"/><circle cx="246" cy="296" r="3" fill="#ff7a3d"/>
+  <g transform="translate(60 200)">
+    <ellipse cx="34" cy="104" rx="18" ry="11" fill="#9ad66b"/><ellipse cx="150" cy="104" rx="18" ry="11" fill="#9ad66b"/>
+    <circle cx="176" cy="62" r="28" fill="#a6e07a" stroke="#fff" stroke-width="5" paint-order="stroke"/>
+    <circle cx="170" cy="58" r="5.5" fill="#1d1a24"/><circle cx="188" cy="58" r="5.5" fill="#1d1a24"/>
+  <circle cx="172.5" cy="55.5" r="1.9" fill="#fff"/><circle cx="190.5" cy="55.5" r="1.9" fill="#fff"/>
+    <circle cx="164" cy="72" r="5" fill="#ff9cc0"/><path d="M174 76q7 4 13 0" stroke="#2d5a1e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M10 100C10 40 50 14 94 14s84 26 84 86z" fill="#3f9a5a" stroke="#fff" stroke-width="6" paint-order="stroke"/>
+    <path d="M94 26l26 18v30l-26 18-26-18V44zM40 62l22 14v24M148 62l-22 14v24" stroke="#2c7442" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    <path d="M10 100h168" stroke="#f2c86b" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#16505f" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Pipo sale</text>
+  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#16505f">de su caparazón</text>
+  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
+  <use href="#mark" x="246" y="356" width="38" height="35"/>
+</svg></div>
+      <h3 class="bk__title">Pipo sale de su caparazón</h3>
+      <p class="bk__text">A Pipo le da vergüenza saludar. Hoy va a intentarlo.</p>
+      <ul class="bk__tags"><li>Superar la timidez</li><li>3 a 5 años</li></ul>
+    </article>
+    <article class="bk bk--pink">
+      <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
+      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Todos en la rama aunque seamos distintos">
+  <defs><linearGradient id="g1450" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9bd6"/><stop offset="1" stop-color="#ffc93c"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#g1450)"/>
+  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
+  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#f28c28"/>
+  
+  <path d="M-10 268c80-22 180-30 330-12" stroke="#7a3b2e" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M230 258c14-18 30-24 46-22M70 270c-8-16-20-24-34-24" stroke="#7a3b2e" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <g fill="#6db33f"><ellipse cx="274" cy="232" rx="16" ry="8" transform="rotate(-25 274 232)"/><ellipse cx="34" cy="244" rx="14" ry="7" transform="rotate(20 34 244)"/></g>
+  <g transform="translate(68 226)">
+    <path d="M-23.400000000000002 -2.6l-18.2 -9.1l5.2 15.6z" fill="#ff4fb8"/>
+    <circle r="26" fill="#ff4fb8" stroke="#fff" stroke-width="4" paint-order="stroke"/>
+    <ellipse cx="3.9" cy="9.1" rx="14.3" ry="11.700000000000001" fill="#ffd6f1"/>
+    <circle cx="8.32" cy="-5.2" r="4.16" fill="#1d1a24"/><circle cx="9.88" cy="-7.0200000000000005" r="1.56" fill="#fff"/>
+    <path d="M19.5 -1.3l9.88 3.12l-9.88 3.12z" fill="#ff9f1c"/>
+    <path d="M-5.2 26 v9.1 M5.2 26 v9.1" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(126 212)">
+    <path d="M-30.6 -3.4000000000000004l-23.799999999999997 -11.899999999999999l6.800000000000001 20.4z" fill="#3fc6dc"/>
+    <circle r="34" fill="#3fc6dc" stroke="#fff" stroke-width="4" paint-order="stroke"/>
+    <ellipse cx="5.1" cy="11.899999999999999" rx="18.700000000000003" ry="15.3" fill="#d6f7fa"/>
+    <circle cx="10.88" cy="-6.800000000000001" r="5.44" fill="#1d1a24"/><circle cx="12.92" cy="-9.18" r="2.04" fill="#fff"/>
+    <path d="M25.5 -1.7000000000000002l12.92 4.08l-12.92 4.08z" fill="#ff9f1c"/>
+    <path d="M-6.800000000000001 34 v11.899999999999999 M6.800000000000001 34 v11.899999999999999" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(192 226)">
+    <path d="M21.6 -2.4000000000000004l16.799999999999997 -8.399999999999999l-4.800000000000001 14.399999999999999z" fill="#ffd24a"/>
+    <circle r="24" fill="#ffd24a" stroke="#fff" stroke-width="4" paint-order="stroke"/>
+    <ellipse cx="-3.5999999999999996" cy="8.399999999999999" rx="13.200000000000001" ry="10.8" fill="#fff3bf"/>
+    <circle cx="-7.68" cy="-4.800000000000001" r="3.84" fill="#1d1a24"/><circle cx="-9.120000000000001" cy="-6.48" r="1.44" fill="#fff"/>
+    <path d="M-18.0 -1.2000000000000002l-9.120000000000001 2.88l9.120000000000001 2.88z" fill="#ff9f1c"/>
+    <path d="M-4.800000000000001 24 v8.399999999999999 M4.800000000000001 24 v8.399999999999999" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(244 220)">
+    <path d="M18.0 -2.0l14.0 -7.0l-4.0 12.0z" fill="#9b86ff"/>
+    <circle r="20" fill="#9b86ff" stroke="#fff" stroke-width="4" paint-order="stroke"/>
+    <ellipse cx="-3.0" cy="7.0" rx="11.0" ry="9.0" fill="#e8e2ff"/>
+    <circle cx="-6.4" cy="-4.0" r="3.2" fill="#1d1a24"/><circle cx="-7.6" cy="-5.4" r="1.2" fill="#fff"/>
+    <path d="M-15.0 -1.0l-7.6 2.4l7.6 2.4z" fill="#ff9f1c"/>
+    <path d="M-4.0 20 v7.0 M4.0 20 v7.0" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#5a1f45" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Todos en la rama</text>
+  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#5a1f45">aunque seamos distintos</text>
+  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
+  <use href="#mark" x="246" y="356" width="38" height="35"/>
+</svg></div>
+      <h3 class="bk__title">Todos en la rama</h3>
+      <p class="bk__text">Pájaros de todos los colores buscan un lugar en el mismo árbol.</p>
+      <ul class="bk__tags"><li>Inclusión y diversidad</li><li>6 a 8 años</li></ul>
+    </article>
   </div>
 </section>
 
 <!-- ============ CÓMO SE LEE ============ -->
-<section class="section section--cream static-only" id="como">
+<section class="section slab slab--pinkl" id="como">
   <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">Cómo se lee un cuento Cumay</p>
-      <h2>Tres pasos, ninguna pantalla</h2>
+    <div class="steps__head">
+      <h2 class="big">Cómo se lee</h2>
+      <p class="hand hand--tilt">tres pasos,<br>ninguna pantalla</p>
     </div>
-    <ol class="steps">
-      <li class="step reveal">
-        <span class="step__n">1</span>
-        <h3>Lee</h3>
-        <p>Lean la historia juntos. Los personajes viven situaciones que los niños reconocen y muestran cómo resolverlas.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__n">2</span>
-        <h3>Interactúa</h3>
-        <p>Responde preguntas, propone opciones y descubre las consecuencias de sus decisiones. El niño deja de ser espectador y pasa a ser protagonista.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__n">3</span>
-        <h3>Llévalo a la vida</h3>
-        <p>Las preguntas abren la conversación en casa y en la escuela, para aplicar lo aprendido en el día a día.</p>
-      </li>
+    <ol class="cards3">
+      <li class="scard scard--sky"><span class="hand scard__n">Paso #1</span><svg viewBox="0 0 120 90"><path d="M60 80C46 70 24 68 6 72V14c18-4 40-2 54 8z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M60 80c14-10 36-12 54-8V14c-18-4-40-2-54 8z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M60 22v58M18 30c10-1 22 0 32 5M18 44c10-1 22 0 32 5M70 35c10-5 22-6 32-5M70 49c10-5 22-6 32-5" stroke="#1b1530" stroke-width="3" stroke-linecap="round" fill="none"/></svg><h3>Lee</h3><p>Los personajes viven situaciones que los niños reconocen y muestran cómo resolverlas.</p></li>
+      <li class="scard scard--pink"><span class="hand scard__n">Paso #2</span><svg viewBox="0 0 120 90"><circle cx="40" cy="44" r="26" fill="#fff" stroke="#1b1530" stroke-width="4"/><text x="40" y="56" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="34" fill="#1b1530">?</text><path d="M74 30h36v26H86l-10 10v-10h-2z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M84 43h16" stroke="#1b1530" stroke-width="4" stroke-linecap="round"/></svg><h3>Interactúa</h3><p>Responde preguntas, propone opciones y descubre las consecuencias de sus decisiones.</p></li>
+      <li class="scard scard--sun"><span class="hand scard__n">Paso #3</span><svg viewBox="0 0 120 90"><path d="M20 80V44l30-24 30 24v36z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M42 80V60h16v20" fill="none" stroke="#1b1530" stroke-width="4"/><path d="M96 34c-6-5-10-8-10-13 0-3 2-5 5-5 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 2 5 5 0 5-4 8-10 13z" fill="#e8264a" stroke="#1b1530" stroke-width="3"/></svg><h3>Llévalo a la vida</h3><p>Las preguntas abren la conversación en casa y en la escuela, para aplicar lo aprendido en el día a día.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- ============ EL PROGRAMA ============ -->
-<section class="section program" id="programa">
+<!-- ============ COMPETENCIAS: palabras gigantes ============ -->
+<section class="section slab slab--pink words" aria-labelledby="words-t">
   <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">Programa de educación socioemocional infantil</p>
-      <h2>El poder de los cuentos</h2>
-      <p class="program__lead">La literatura infantil entretiene y también forma. Con cuentos animados e interactivos ayudamos a los niños a desarrollar su inteligencia emocional y a llevar lo aprendido a su vida diaria, a sus relaciones y a la construcción de un futuro mejor.</p>
-    </div>
-
-    <!-- Por qué de 3 a 8 años -->
-    <div class="why">
-      <div class="why__text reveal">
-        <h3>¿Por qué en la infancia?</h3>
-        <p>La educación socioemocional es el pilar del desarrollo cognitivo, la salud mental y el éxito futuro.</p>
-        <p>En la primera infancia la <strong>plasticidad cerebral</strong> alcanza su punto máximo: las estructuras de regulación emocional se están moldeando activamente a través de la interacción con el entorno.</p>
-      </div>
-      <figure class="ages reveal" aria-label="Edades del programa: de 3 a 8 años">
-        <figcaption class="ages__title">De <strong>3</strong> a <strong>8</strong> años</figcaption>
-        <div class="ages__track">
-          <div class="ages__fill"></div>
-          <ol class="ages__marks">
-            <li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li>
-          </ol>
-        </div>
-        <div class="ages__bands">
-          <span class="ages__band ages__band--pre">Preescolar <small>3 a 5 años</small></span>
-          <span class="ages__band ages__band--esc">Inicio escolar <small>6 a 8 años</small></span>
-        </div>
-      </figure>
-    </div>
-
-    <!-- Fundamento científico -->
-    <div class="pillars">
-      <div class="pillars__head reveal">
-        <h3>Fundamento científico</h3>
-        <p>Seis marcos de la psicología del desarrollo sostienen cada cuento.</p>
-      </div>
-      <div class="pillars__grid">
-        <article class="pillar reveal" style="--c:#d7263d">
-          <span class="pillar__who">D. Goleman</span>
-          <h4>Inteligencia emocional</h4>
-          <p>El cociente emocional (CE) define el éxito en la vida. Previene conductas disruptivas y ansiedad.</p>
-        </article>
-        <article class="pillar reveal" style="--c:#2a8aa1">
-          <span class="pillar__who">A. Bandura</span>
-          <h4>Aprendizaje social</h4>
-          <p>Modelado vicario mediante cuentos interactivos para resolver problemas en el mundo real.</p>
-        </article>
-        <article class="pillar reveal" style="--c:#4a8f2a">
-          <span class="pillar__who">E. Erikson</span>
-          <h4>Desarrollo psicosocial</h4>
-          <p>Fomenta la autonomía, la autoeficacia y el propósito.</p>
-        </article>
-        <article class="pillar reveal" style="--c:#c98a12">
-          <span class="pillar__who">L. Kohlberg</span>
-          <h4>Desarrollo moral</h4>
-          <p>Estimula la transición desde una moral basada en la obediencia a la autoridad o el deseo de agradar hacia la construcción de un juicio moral más autónomo.</p>
-        </article>
-        <article class="pillar reveal" style="--c:#7a4fb0">
-          <span class="pillar__who">L. Vygotsky</span>
-          <h4>Pensamiento crítico y aprendizaje significativo</h4>
-          <p>La interactividad de los relatos estimula el ensayo de soluciones a conflictos socioemocionales de manera segura, a través de los personajes.</p>
-        </article>
-        <article class="pillar reveal" style="--c:#8b4a2b">
-          <span class="pillar__who">J. Bowlby · U. Bronfenbrenner</span>
-          <h4>Neurobiología del apego y enfoque sistémico</h4>
-          <p>Conexión clave escuela-hogar para un entorno seguro y predecible.</p>
-        </article>
-      </div>
-    </div>
-
-    <!-- Competencias -->
-    <div class="skills reveal">
+    <p class="hand words__kicker" id="words-t">para crecer sintiendo</p>
+    <ul class="words__list">
+      <li>Autorregulación</li><li>Empatía</li><li>Autonomía</li><li>Escucha activa</li><li>Respeto</li><li>Autoconciencia</li><li>Convivencia</li><li>¡y mucho más!</li>
+    </ul>
+    <div class="skills skills--card">
       <h3>Competencias clave</h3>
       <div class="skills__tabs" role="tablist" aria-label="Etapas">
         <button class="skills__tab" role="tab" id="tab-pre" aria-controls="panel-pre" aria-selected="true">Preescolar <small>3 a 5 años</small></button>
@@ -318,17 +373,111 @@
   </div>
 </section>
 
+<!-- ============ POR QUÉ CUMAY: pastillas ============ -->
+<section class="section slab slab--sun why-cumay" aria-labelledby="why-t">
+  <div class="wrap">
+    <h2 class="big" id="why-t">¿Por qué Cumay?</h2>
+    <div class="chips-pile">
+      <span class="chip chip--pink">En papel</span>
+      <span class="chip chip--sky">De 3 a 8 años</span>
+      <span class="chip chip--lilac">Hecho por una psicóloga</span>
+      <span class="chip chip--leaf">6 bases científicas</span>
+      <span class="chip chip--white">Casa + escuela</span>
+      <span class="chip chip--ink">Sin pantallas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL PROGRAMA ============ -->
+<section class="section program" id="programa">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="hand">programa de educación socioemocional infantil</p>
+      <h2 class="big">El poder de los cuentos</h2>
+      <p class="program__lead">La literatura infantil entretiene y también forma. Con cuentos animados e interactivos ayudamos a los niños a desarrollar su inteligencia emocional y a llevar lo aprendido a su vida diaria, a sus relaciones y a la construcción de un futuro mejor.</p>
+    </div>
+    <div class="why">
+      <div class="why__text reveal">
+        <h3>¿Por qué en la infancia?</h3>
+        <p>La educación socioemocional es el pilar del desarrollo cognitivo, la salud mental y el éxito futuro.</p>
+        <p>En la primera infancia la <strong>plasticidad cerebral</strong> alcanza su punto máximo: las estructuras de regulación emocional se están moldeando activamente a través de la interacción con el entorno.</p>
+      </div>
+      <figure class="ages reveal" aria-label="Edades del programa: de 3 a 8 años">
+        <figcaption class="ages__title">De <strong>3</strong> a <strong>8</strong> años</figcaption>
+        <div class="ages__track">
+          <div class="ages__fill"></div>
+          <ol class="ages__marks"><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ol>
+        </div>
+        <div class="ages__bands">
+          <span class="ages__band ages__band--pre">Preescolar <small>3 a 5 años</small></span>
+          <span class="ages__band ages__band--esc">Inicio escolar <small>6 a 8 años</small></span>
+        </div>
+      </figure>
+    </div>
+    <div class="pillars">
+      <div class="pillars__head reveal">
+        <h3>Fundamento científico</h3>
+        <p>Seis marcos de la psicología del desarrollo sostienen cada cuento.</p>
+      </div>
+      <div class="pillars__grid">
+        <article class="pillar" style="--c:#d7263d">
+          <span class="pillar__who">D. Goleman</span>
+          <h4>Inteligencia emocional</h4>
+          <p>El cociente emocional (CE) define el éxito en la vida. Previene conductas disruptivas y ansiedad.</p>
+        </article>
+        <article class="pillar" style="--c:#2a8aa1">
+          <span class="pillar__who">A. Bandura</span>
+          <h4>Aprendizaje social</h4>
+          <p>Modelado vicario mediante cuentos interactivos para resolver problemas en el mundo real.</p>
+        </article>
+        <article class="pillar" style="--c:#4a8f2a">
+          <span class="pillar__who">E. Erikson</span>
+          <h4>Desarrollo psicosocial</h4>
+          <p>Fomenta la autonomía, la autoeficacia y el propósito.</p>
+        </article>
+        <article class="pillar" style="--c:#c98a12">
+          <span class="pillar__who">L. Kohlberg</span>
+          <h4>Desarrollo moral</h4>
+          <p>Estimula la transición desde una moral basada en la obediencia a la autoridad o el deseo de agradar hacia la construcción de un juicio moral más autónomo.</p>
+        </article>
+        <article class="pillar" style="--c:#7a4fb0">
+          <span class="pillar__who">L. Vygotsky</span>
+          <h4>Pensamiento crítico y aprendizaje significativo</h4>
+          <p>La interactividad de los relatos estimula el ensayo de soluciones a conflictos socioemocionales de manera segura, a través de los personajes.</p>
+        </article>
+        <article class="pillar" style="--c:#8b4a2b">
+          <span class="pillar__who">J. Bowlby · U. Bronfenbrenner</span>
+          <h4>Neurobiología del apego y enfoque sistémico</h4>
+          <p>Conexión clave escuela-hogar para un entorno seguro y predecible.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CINTAS ============ -->
+<div class="ribbons" aria-hidden="true">
+  <div class="ribbon ribbon--pink"><div class="ribbon__in">Cuentos en papel ✦ Sin pantallas ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ Cuentos en papel ✦ Sin pantallas ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ </div></div>
+  <div class="ribbon ribbon--sky"><div class="ribbon__in">Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ </div></div>
+</div>
+
 <!-- ============ ARDILLÍN ============ -->
-<section class="section section--sky" id="cuento">
+<section class="section slab slab--leaf" id="cuento">
   <div class="wrap split split--rev">
-    <div>
+    <div class="feature__art">
       <div class="feature__cover">
         <img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve" loading="lazy">
       </div>
+      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="badge-c" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+        <circle cx="60" cy="60" r="58" fill="#ff4fb8"/>
+        <text class="badge__txt"><textPath href="#badge-c" textLength="270" lengthAdjust="spacing">primer cuento ✦ primer cuento ✦</textPath></text>
+        <use href="#heart" x="44" y="45" width="32" height="30" color="#fff"/>
+      </svg>
     </div>
     <div class="feature__copy">
-      <p class="eyebrow eyebrow--light">El primer cuento</p>
-      <h2 class="title-hand">Ardillín <small>Copo de nieve</small></h2>
+      <p class="hand">el primer cuento</p>
+      <h2 class="big">Ardillín <small>Copo de nieve</small></h2>
       <!-- PENDIENTE: reemplazar por la sinopsis real del cuento -->
       <p>El primer cuento de Cumay, escrito por Gloria Carrasco. Una historia en papel para leer en compañía y conversar sobre lo que sentimos.</p>
       <ul class="ticks">
@@ -336,50 +485,48 @@
         <li>Partes para tocar y descubrir</li>
         <li>Preguntas para conversar en casa y en la escuela</li>
       </ul>
-      <a href="#contacto" class="btn btn--white">Avísame cuando esté disponible</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRÓXIMAMENTE ============ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">La colección crece</p>
-      <h2>Más cuentos, más emociones</h2>
-    </div>
-    <div class="soon">
-      <div class="soon__item reveal"><span>🌱</span><h3>Ardillín</h3><p>Copo de nieve</p><em class="tag tag--on">Primer cuento</em></div>
-      <div class="soon__item soon__item--ghost reveal"><span>?</span><h3>Próximo cuento</h3><p>Se está escribiendo…</p><em class="tag">Pronto</em></div>
-      <div class="soon__item soon__item--ghost reveal"><span>?</span><h3>Próximo cuento</h3><p>Se está dibujando…</p><em class="tag">Pronto</em></div>
+      <a href="#contacto" class="btn btn--white"><span>Avísame cuando esté disponible</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
     </div>
   </div>
 </section>
 
 <!-- ============ AUTORA ============ -->
-<section class="section section--cream" id="autora">
-  <div class="wrap author reveal">
-    <div class="author__badge">
-      <svg><use href="#heart"/></svg>
-    </div>
+<section class="section slab slab--lilac" id="autora">
+  <div class="wrap author">
+    <div class="author__badge"><svg><use href="#heart"/></svg></div>
     <div>
-      <p class="eyebrow">Detrás de Cumay</p>
-      <h2>Gloria Carrasco</h2>
+      <p class="hand">detrás de Cumay</p>
+      <h2 class="big">Gloria Carrasco</h2>
       <p class="author__role">Psicóloga · Autora de los cuentos</p>
       <p>Cada cuento Cumay está diseñado desde la psicología del desarrollo: la <strong>inteligencia emocional</strong> (Goleman), el <strong>aprendizaje social</strong> (Bandura), el <strong>desarrollo psicosocial</strong> (Erikson), el <strong>desarrollo moral</strong> (Kohlberg), el <strong>aprendizaje significativo</strong> (Vygotsky) y la <strong>teoría del apego</strong> (Bowlby). El objetivo es que niños de 3 a 8 años aprendan a reconocer y regular lo que sienten, y a convivir con los demás.</p>
     </div>
   </div>
 </section>
 
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq">
+  <div class="wrap faq__in">
+    <h2 class="big">Preguntas frecuentes</h2>
+    <div class="faq__list">
+      <details class="qa"><summary>¿Para qué edades son los cuentos?<i></i></summary><div class="qa__a"><p>Para niños de 3 a 8 años, en dos etapas: preescolar (3 a 5 años) e inicio escolar (6 a 8 años).</p></div></details>
+      <details class="qa"><summary>¿Qué es un cuento mayéutico?<i></i></summary><div class="qa__a"><p>Un cuento que no entrega todas las respuestas: con preguntas, acompaña al niño a encontrarlas por sí mismo.</p></div></details>
+      <details class="qa"><summary>¿Por qué en papel y no en pantalla?<i></i></summary><div class="qa__a"><p>Cumay nace para alejar a los niños de las pantallas. Un libro físico se toca, se comparte y se lee en compañía.</p></div></details>
+      <details class="qa"><summary>¿Sirve para la escuela?<i></i></summary><div class="qa__a"><p>Sí. El programa conecta escuela y hogar: las preguntas del cuento abren la conversación en ambos lugares.</p></div></details>
+      <details class="qa"><summary>¿Cuándo sale Ardillín?<i></i></summary><div class="qa__a"><p>Muy pronto. Déjanos tu correo más abajo y te avisamos apenas esté disponible.</p></div></details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACTO ============ -->
-<section class="section section--final" id="contacto">
-  <div class="wrap final reveal">
-    <h2>Sé de los primeros en leer Cumay</h2>
+<section class="section slab slab--pink final" id="contacto">
+  <div class="wrap final__in">
+    <p class="hand">¿nos leemos?</p>
+    <h2 class="big">Sé de los primeros en leer Cumay</h2>
     <p>Déjanos tu correo y te contamos cuando los cuentos estén listos.</p>
     <form class="signup" id="signup" novalidate>
       <label class="sr" for="email">Tu correo</label>
       <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email">
-      <button class="btn" type="submit">Avísenme ♥</button>
+      <button class="btn" type="submit"><span>Avísenme ♥</span></button>
     </form>
     <p class="signup__msg" id="signupMsg" role="status"></p>
   </div>
