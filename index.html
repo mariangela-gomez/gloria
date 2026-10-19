@@ -7,7 +7,7 @@
   <meta name="description" content="Cumay son cuentos mayéuticos en papel, creados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional. Libros físicos e interactivos, sin pantallas.">
   <meta property="og:title" content="Cumay · Cuentos mayéuticos">
   <meta property="og:description" content="Cuentos de papel para abrir, tocar, preguntar y sentir. Para niños de 3 a 8 años.">
-  <meta property="og:image" content="images/ardillin-portada.jpg">
+  <meta property="og:image" content="images/covers/ardillin.jpg">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +24,6 @@
     <symbol id="heart" viewBox="0 0 32 30">
       <path d="M16 29C6 21 1 15.5 1 9.5 1 4.8 4.6 1.5 9 1.5c3 0 5.4 1.6 7 4.2 1.6-2.6 4-4.2 7-4.2 4.4 0 8 3.3 8 8 0 6-5 11.500-15 19.500z" fill="currentColor"/>
     </symbol>
-    <symbol id="tree" viewBox="0 0 40 70">
-      <rect x="18" y="44" width="5" height="24" rx="2" fill="#8a5a33"/>
-      <path d="M20 2C9 14 4 28 6 40c2 8 28 8 30 0C36 28 31 14 20 2z" fill="currentColor"/>
-    </symbol>
-    <!-- Logo: libro abierto del que nace un corazón (la idea que nace de una pregunta) -->
     <symbol id="mark" viewBox="0 0 72 66">
       <path d="M36 62C29 55 15 53 3 56V31c12-3 26-1 33 6z" fill="#2a8aa1"/>
       <path d="M36 62c7-7 21-9 33-6V31c-12-3-26-1-33 6z" fill="#4fb3c8"/>
@@ -47,92 +42,74 @@
   </defs>
 </svg>
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV: logo arriba a la izquierda + pastillas fijas al centro ============ -->
 <header class="nav" id="top">
-  <div class="nav__in">
-    <a href="#top" class="logo" aria-label="Cumay, cuentos mayéuticos">
-      <svg class="logo__mark" viewBox="0 0 72 66"><use href="#mark"/></svg>
-      <span class="logo__text">
-        <span class="logo__word">Cumay</span>
-        <span class="logo__tag">cuentos mayéuticos</span>
-      </span>
-    </a>
-    <nav class="nav__links" aria-label="Principal">
-      <a href="#mayeutica" data-label="que">¿Qué es?</a>
+  <a href="#top" class="logo nav__logo" aria-label="Cumay, cuentos mayéuticos">
+    <svg class="logo__mark" viewBox="0 0 72 66"><use href="#mark"/></svg>
+    <span class="logo__text"><span class="logo__word">Cumay</span><span class="logo__tag">cuentos mayéuticos</span></span>
+  </a>
+  <nav class="nav__pills" aria-label="Principal">
+    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    <div class="nav__links">
+      <a href="#mayeutica">¿Qué es?</a>
       <a href="#cuentos">Cuentos</a>
       <a href="#como">Cómo se lee</a>
       <a href="#programa">El programa</a>
       <a href="#faq">Preguntas</a>
-    </nav>
-    <a href="#contacto" class="btn btn--sm nav__cta"><span>Quiero saber más</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
-  </div>
+    </div>
+    <a href="#contacto" class="btn btn--orange"><span>Quiero saber más</span><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+  </nav>
 </header>
 
 <main>
 
 <!-- ============ HERO ============ -->
-<section class="hero slab slab--sun">
-  <svg class="blob blob--1" viewBox="0 0 600 600" aria-hidden="true"><path d="M421 92c64 45 118 121 112 196-6 76-73 150-151 186-78 37-167 35-235-6S29 335 41 254c13-81 81-150 157-182 75-31 159-25 223 20z"/></svg>
-  <svg class="blob blob--2" viewBox="0 0 600 600" aria-hidden="true"><path d="M470 140c40 70 40 170-10 240s-150 110-240 90S60 380 60 290 120 110 210 80s220-10 260 60z"/></svg>
+<section class="hero">
+  <svg class="waves" viewBox="0 0 1540 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="wave wave--0" d="M520 120C700 60 900 140 1000 300S1240 440 1300 600 1160 900 980 860 760 640 640 520 340 180 520 120Z" data-b="M560 140C740 90 920 180 1020 320S1260 480 1300 640 1140 880 960 840 780 620 660 500 380 190 560 140Z"/>
+    <path class="wave wave--1" d="M-80 560C120 380 260 300 420 380S700 640 900 520 1180 160 1360 220 1620 420 1620 420V1000H-80Z" data-b="M-80 600C140 440 300 360 460 420S720 600 920 470 1160 220 1360 260 1620 380 1620 380V1000H-80Z"/>
+    <path class="wave wave--2" d="M-80 780C160 700 300 520 520 600S860 860 1060 760 1360 600 1620 700V1000H-80Z" data-b="M-80 820C180 740 340 600 540 650S840 820 1040 720 1340 640 1620 740V1000H-80Z"/>
+  </svg>
+  <div class="hero__books" aria-hidden="true">
+    <div class="b3d fly fly--tl" style="--spine:#1f8a9a" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/pipo.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div>
+    <div class="b3d fly fly--main" style="--spine:#2f7f8f" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/ardillin.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div>
+    <div class="b3d fly fly--bottom" style="--spine:#b5521f" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/tito.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div>
+  </div>
   <div class="wrap hero__in">
-    <div class="hero__copy">
-      <p class="pill hi">📖 Libros de papel · Sin pantallas</p>
-      <h1 class="hi-title">Cuentos que se <em>abren</em>, se <em>tocan</em> y se <em>sienten</em>.</h1>
-      <p class="lead hi">Cumay crea libros físicos e interactivos, diseñados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional y lleven lo aprendido a su vida diaria.</p>
-      <div class="hero__cta hi">
-        <a href="#cuentos" class="btn"><span>Ver los cuentos</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-        <a href="#como" class="btn btn--ghost"><span>Cómo funciona</span></a>
-      </div>
-      <ul class="hero__facts hi">
-        <li><strong>3–8</strong> años</li>
-        <li><strong>6</strong> bases científicas</li>
-        <li><strong>100%</strong> en papel</li>
-      </ul>
-    </div>
-
-    <div class="hero__book">
-      <p class="hand hand--hero hi" aria-hidden="true">¡hecho para<br>tocar y preguntar!
-        <svg viewBox="0 0 90 60"><path class="draw" d="M6 8c26 2 52 14 66 40M72 48l-14-2M72 48l2-14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
-      </p>
-      <div class="book-slot" id="bookSlot">
-        <!-- Versión estática (móvil / sin animaciones). En escritorio la reemplaza el libro animado. -->
-        <div class="book" id="book">
-          <img src="images/ardillin-portada.jpg" alt="Portada del cuento Ardillín, Copo de nieve: una ardilla blanca abraza una enorme bellota en un camino entre colinas verdes">
-          <span class="book__spine"></span>
-          <span class="book__shine"></span>
-        </div>
-      </div>
-    </div>
+    <h1 class="hi-title">Cuentos que se <em>abren</em>, se <em>tocan</em> y se <em>sienten</em></h1>
+    <p class="lead hi">Libros físicos e interactivos, diseñados por una psicóloga, para que niños de 3 a 8 años desarrollen su inteligencia emocional y lleven lo aprendido a su vida diaria.</p>
+    <div class="hero__cta hi"><a href="#cuentos" class="btn"><span>Ver los cuentos</span><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div>
   </div>
 </section>
 
-<!-- ============ EL CUENTO SE ABRE (solo escritorio con animaciones) ============ -->
-<section class="story slab slab--sky" id="story" aria-label="Qué es un cuento Cumay">
-  <div class="story__cap story__cap--l">
-    <p class="hand">sigue bajando…</p>
-    <h2>Abre el cuento</h2>
-  </div>
-  <div class="story__cap story__cap--r">
-    <p>Tocar.<br>Preguntar.<br>Conversar.</p>
-  </div>
-  <div class="story__hint" aria-hidden="true">↓</div>
-</section>
-
-<!-- ============ MAYÉUTICA (móvil; en escritorio está dentro del libro) ============ -->
-<section class="section slab slab--leaf static-only" id="mayeutica">
+<!-- ============ ¿QUÉ ES? ============ -->
+<section class="section slab slab--sky" id="mayeutica">
   <div class="wrap split">
     <div>
       <p class="hand">¿qué es un cuento mayéutico?</p>
-      <h2>Los mejores finales los escriben los niños.</h2>
-      <p>La <strong>mayéutica</strong> es el arte de “dar a luz” ideas a través de preguntas. Un cuento mayéutico no entrega todas las respuestas: <strong>acompaña al niño a encontrarlas por sí mismo</strong>.</p>
+      <h2 class="big">Los mejores finales los escriben los niños</h2>
     </div>
-    <div>
-      <div class="question" role="button" tabindex="0" aria-label="Toca para ver otra pregunta">
-        <span class="question__label">Pregunta para conversar</span>
-        <p class="question__text">¿Qué haces cuando te enojas mucho? ¿Qué te ayuda a calmarte?</p>
-        <span class="question__hint">Toca para otra pregunta ↻</span>
-      </div>
+    <div class="mayeutica__text">
+      <p>La <strong>mayéutica</strong> es el arte de “dar a luz” ideas a través de preguntas.</p>
+      <p>Un cuento mayéutico no entrega todas las respuestas: <strong>acompaña al niño a encontrarlas por sí mismo</strong>.</p>
     </div>
   </div>
 </section>
@@ -140,174 +117,53 @@
 <!-- ============ CATÁLOGO ============ -->
 <section class="section shelf" id="cuentos">
   <div class="wrap shelf__head">
-    <div>
-      <p class="hand hand--tilt">un cuento para<br>cada emoción</p>
+    <p class="hand hand--tilt">un cuento para<br>cada emoción</p>
+    <div class="shelf__title">
       <h2 class="big">Nuestros cuentos</h2>
-      <p class="shelf__lead">Cada historia trabaja una competencia socioemocional, con partes para tocar y preguntas para conversar.</p>
+      <p class="shelf__lead">Cada historia trabaja una competencia socioemocional.</p>
     </div>
     <div class="shelf__nav">
-      <button class="round" data-dir="-1" aria-label="Cuentos anteriores"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button class="round" data-dir="1" aria-label="Más cuentos"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="round" data-dir="-1" aria-label="Cuentos anteriores"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="round" data-dir="1" aria-label="Más cuentos"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
-  <div class="shelf__track" id="shelf" tabindex="0" aria-label="Catálogo de cuentos">
+  <div class="shelf__viewport">
+    <div class="shelf__track" id="shelf" aria-label="Catálogo de cuentos">
     <article class="bk bk--leaf">
-      <div class="bk__cover"><img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve" loading="lazy"></div>
-      <h3 class="bk__title">Ardillín</h3>
-      <p class="bk__text">El primer cuento de Cumay, escrito por Gloria Carrasco.</p>
+      <div class="bk__cover"><img src="images/covers/ardillin.jpg" alt="Portada de Ardillín, Copo de nieve" loading="lazy"></div>
       <ul class="bk__tags"><li>Primer cuento</li><li>3 a 8 años</li></ul>
+      <h3 class="bk__title">Ardillín, Copo de nieve</h3>
+      <p class="bk__text">El primer cuento de Cumay, escrito por Gloria Carrasco.</p>
     </article>
     <article class="bk bk--sun">
       <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
-      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Tito y el volcán de enojo">
-  <defs><linearGradient id="g1613" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a3d"/><stop offset="1" stop-color="#ffc93c"/></linearGradient></defs>
-  <rect width="300" height="400" fill="url(#g1613)"/>
-  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
-  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#c25a2a"/>
-  
-  <path d="M112 300l38-110h26l40 110z" fill="#6e3226"/>
-  <path d="M150 190c4-14 18-16 26 0-8 10-18 10-26 0z" fill="#ff3b30"/>
-  <path d="M157 200c-3 14-6 22-10 30M170 198c3 12 2 20 0 28" stroke="#ff3b30" stroke-width="6" stroke-linecap="round" fill="none"/>
-  <g fill="#fff" opacity=".9"><circle cx="150" cy="160" r="12"/><circle cx="166" cy="150" r="15"/><circle cx="184" cy="162" r="11"/></g>
-  <g transform="translate(70 196)">
-    <circle cx="18" cy="22" r="17" fill="#a8673a" stroke="#fff" stroke-width="4" paint-order="stroke"/><circle cx="102" cy="22" r="17" fill="#a8673a" stroke="#fff" stroke-width="4" paint-order="stroke"/>
-    <circle cx="18" cy="22" r="8" fill="#e9b07a"/><circle cx="102" cy="22" r="8" fill="#e9b07a"/>
-    <ellipse cx="60" cy="118" rx="54" ry="48" fill="#a8673a" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-    <ellipse cx="60" cy="126" rx="30" ry="30" fill="#e9c08f"/>
-    <circle cx="60" cy="58" r="46" fill="#b5713f" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-    <circle cx="42" cy="52" r="7" fill="#1d1a24"/><circle cx="78" cy="52" r="7" fill="#1d1a24"/>
-  <circle cx="44.5" cy="49.5" r="2.4" fill="#fff"/><circle cx="80.5" cy="49.5" r="2.4" fill="#fff"/>
-    <path d="M32 38l16 6M88 38l-16 6" stroke="#5a2e15" stroke-width="5" stroke-linecap="round"/>
-    <ellipse cx="60" cy="74" rx="18" ry="13" fill="#e9c08f"/><ellipse cx="60" cy="68" rx="7" ry="5" fill="#3a1d10"/>
-    <path d="M52 80q8-5 16 0" stroke="#3a1d10" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <circle cx="30" cy="70" r="7" fill="#ff8c8c" opacity=".7"/><circle cx="90" cy="70" r="7" fill="#ff8c8c" opacity=".7"/>
-  </g>
-  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#3a1d10" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Tito y el volcán</text>
-  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#3a1d10">de enojo</text>
-  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
-  <use href="#mark" x="246" y="356" width="38" height="35"/>
-</svg></div>
+      <div class="bk__cover"><img src="images/covers/tito.jpg" alt="Portada de Tito y el volcán de enojo" loading="lazy"></div>
+      <ul class="bk__tags"><li>Regulación del enojo</li><li>3 a 5 años</li></ul>
       <h3 class="bk__title">Tito y el volcán de enojo</h3>
       <p class="bk__text">Cuando el enojo sube como lava, Tito aprende a respirar hasta que se enfría.</p>
-      <ul class="bk__tags"><li>Regulación del enojo</li><li>3 a 5 años</li></ul>
     </article>
     <article class="bk bk--lilac">
       <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
-      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de ¿Vuelves pronto? una historia de Nube">
-  <defs><linearGradient id="g1706" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9b86ff"/><stop offset="1" stop-color="#ffd6f1"/></linearGradient></defs>
-  <rect width="300" height="400" fill="url(#g1706)"/>
-  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
-  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#d99be8"/>
-  
-  <circle cx="232" cy="128" r="26" fill="#fff6c9"/><circle cx="244" cy="120" r="24" fill="#a796ff"/>
-  <g fill="#fff6c9"><circle cx="60" cy="130" r="3"/><circle cx="90" cy="160" r="2"/><circle cx="210" cy="190" r="2.5"/></g>
-  <rect x="186" y="222" width="74" height="96" rx="8" fill="#ffb347" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-  <path d="M180 226l43-34 43 34z" fill="#e8264a" stroke="#fff" stroke-width="5" paint-order="stroke" stroke-linejoin="round"/>
-  <rect x="210" y="266" width="26" height="52" rx="4" fill="#7a3b2e"/>
-  <g transform="translate(46 160)">
-    <ellipse cx="44" cy="22" rx="13" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="4" paint-order="stroke" transform="rotate(-10 44 22)"/>
-    <ellipse cx="86" cy="22" rx="13" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="4" paint-order="stroke" transform="rotate(12 86 22)"/>
-    <ellipse cx="44" cy="22" rx="6" ry="28" fill="#ffc2dc" transform="rotate(-10 44 22)"/><ellipse cx="86" cy="22" rx="6" ry="28" fill="#ffc2dc" transform="rotate(12 86 22)"/>
-    <ellipse cx="66" cy="132" rx="46" ry="40" fill="#f4f0ff" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-    <circle cx="66" cy="86" r="40" fill="#fbf9ff" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-    <circle cx="52" cy="84" r="6.5" fill="#1d1a24"/><circle cx="80" cy="84" r="6.5" fill="#1d1a24"/>
-  <circle cx="54.5" cy="81.5" r="2.3" fill="#fff"/><circle cx="82.5" cy="81.5" r="2.3" fill="#fff"/>
-    <ellipse cx="66" cy="100" rx="5" ry="4" fill="#ff8fb8"/>
-    <path d="M60 108q6 4 12 0" stroke="#7a5a8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <circle cx="42" cy="100" r="6" fill="#ffb3cf"/><circle cx="90" cy="100" r="6" fill="#ffb3cf"/>
-    <path d="M66 150c-10-8-18-12-18-20 0-5 4-8 8-8 4 0 7 3 10 7 3-4 6-7 10-7 4 0 8 3 8 8 0 8-8 12-18 20z" fill="#e8264a" stroke="#fff" stroke-width="3" paint-order="stroke"/>
-  </g>
-  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#4a2a6b" stroke-width="7" paint-order="stroke" stroke-linejoin="round">¿Vuelves pronto?</text>
-  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#4a2a6b">una historia de Nube</text>
-  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
-  <use href="#mark" x="246" y="356" width="38" height="35"/>
-</svg></div>
-      <h3 class="bk__title">¿Vuelves pronto?</h3>
-      <p class="bk__text">Nube se queda en la escuela por primera vez. ¿Y si mamá no vuelve?</p>
+      <div class="bk__cover"><img src="images/covers/vuelves.jpg" alt="Portada de Nube, ¿vuelves pronto?" loading="lazy"></div>
       <ul class="bk__tags"><li>Ansiedad por separación</li><li>3 a 5 años</li></ul>
+      <h3 class="bk__title">Nube, ¿vuelves pronto?</h3>
+      <p class="bk__text">Nube se queda en la escuela por primera vez. ¿Y si mamá no vuelve?</p>
     </article>
     <article class="bk bk--sky">
       <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
-      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Pipo sale de su caparazón">
-  <defs><linearGradient id="g861" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fd6e6"/><stop offset="1" stop-color="#d6f7fa"/></linearGradient></defs>
-  <rect width="300" height="400" fill="url(#g861)"/>
-  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
-  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#7cc04a"/>
-  
-  <g fill="#fff" opacity=".9"><ellipse cx="70" cy="150" rx="34" ry="14"/><ellipse cx="226" cy="122" rx="28" ry="11"/></g>
-  <circle cx="64" cy="300" r="9" fill="#ff7ab8"/><circle cx="64" cy="300" r="3.5" fill="#ffd24a"/>
-  <circle cx="246" cy="296" r="8" fill="#ffd24a"/><circle cx="246" cy="296" r="3" fill="#ff7a3d"/>
-  <g transform="translate(60 200)">
-    <ellipse cx="34" cy="104" rx="18" ry="11" fill="#9ad66b"/><ellipse cx="150" cy="104" rx="18" ry="11" fill="#9ad66b"/>
-    <circle cx="176" cy="62" r="28" fill="#a6e07a" stroke="#fff" stroke-width="5" paint-order="stroke"/>
-    <circle cx="170" cy="58" r="5.5" fill="#1d1a24"/><circle cx="188" cy="58" r="5.5" fill="#1d1a24"/>
-  <circle cx="172.5" cy="55.5" r="1.9" fill="#fff"/><circle cx="190.5" cy="55.5" r="1.9" fill="#fff"/>
-    <circle cx="164" cy="72" r="5" fill="#ff9cc0"/><path d="M174 76q7 4 13 0" stroke="#2d5a1e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <path d="M10 100C10 40 50 14 94 14s84 26 84 86z" fill="#3f9a5a" stroke="#fff" stroke-width="6" paint-order="stroke"/>
-    <path d="M94 26l26 18v30l-26 18-26-18V44zM40 62l22 14v24M148 62l-22 14v24" stroke="#2c7442" stroke-width="5" fill="none" stroke-linejoin="round"/>
-    <path d="M10 100h168" stroke="#f2c86b" stroke-width="10" stroke-linecap="round"/>
-  </g>
-  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#16505f" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Pipo sale</text>
-  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#16505f">de su caparazón</text>
-  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
-  <use href="#mark" x="246" y="356" width="38" height="35"/>
-</svg></div>
+      <div class="bk__cover"><img src="images/covers/pipo.jpg" alt="Portada de Pipo sale de su caparazón" loading="lazy"></div>
+      <ul class="bk__tags"><li>Superar la timidez</li><li>3 a 5 años</li></ul>
       <h3 class="bk__title">Pipo sale de su caparazón</h3>
       <p class="bk__text">A Pipo le da vergüenza saludar. Hoy va a intentarlo.</p>
-      <ul class="bk__tags"><li>Superar la timidez</li><li>3 a 5 años</li></ul>
     </article>
     <article class="bk bk--pink">
       <!-- PORTADA DE EJEMPLO: reemplazar por el cuento real -->
-      <div class="bk__cover"><svg class="cover-svg" viewBox="0 0 300 400" role="img" aria-label="Portada de Todos en la rama aunque seamos distintos">
-  <defs><linearGradient id="g1450" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9bd6"/><stop offset="1" stop-color="#ffc93c"/></linearGradient></defs>
-  <rect width="300" height="400" fill="url(#g1450)"/>
-  <g opacity=".18" fill="#fff"><circle cx="40" cy="70" r="60"/><circle cx="270" cy="150" r="80"/></g>
-  <path d="M0 330c60-40 140-46 200-26s80 10 100 0v96H0z" fill="#f28c28"/>
-  
-  <path d="M-10 268c80-22 180-30 330-12" stroke="#7a3b2e" stroke-width="14" stroke-linecap="round" fill="none"/>
-  <path d="M230 258c14-18 30-24 46-22M70 270c-8-16-20-24-34-24" stroke="#7a3b2e" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <g fill="#6db33f"><ellipse cx="274" cy="232" rx="16" ry="8" transform="rotate(-25 274 232)"/><ellipse cx="34" cy="244" rx="14" ry="7" transform="rotate(20 34 244)"/></g>
-  <g transform="translate(68 226)">
-    <path d="M-23.400000000000002 -2.6l-18.2 -9.1l5.2 15.6z" fill="#ff4fb8"/>
-    <circle r="26" fill="#ff4fb8" stroke="#fff" stroke-width="4" paint-order="stroke"/>
-    <ellipse cx="3.9" cy="9.1" rx="14.3" ry="11.700000000000001" fill="#ffd6f1"/>
-    <circle cx="8.32" cy="-5.2" r="4.16" fill="#1d1a24"/><circle cx="9.88" cy="-7.0200000000000005" r="1.56" fill="#fff"/>
-    <path d="M19.5 -1.3l9.88 3.12l-9.88 3.12z" fill="#ff9f1c"/>
-    <path d="M-5.2 26 v9.1 M5.2 26 v9.1" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
-  </g>
-  <g transform="translate(126 212)">
-    <path d="M-30.6 -3.4000000000000004l-23.799999999999997 -11.899999999999999l6.800000000000001 20.4z" fill="#3fc6dc"/>
-    <circle r="34" fill="#3fc6dc" stroke="#fff" stroke-width="4" paint-order="stroke"/>
-    <ellipse cx="5.1" cy="11.899999999999999" rx="18.700000000000003" ry="15.3" fill="#d6f7fa"/>
-    <circle cx="10.88" cy="-6.800000000000001" r="5.44" fill="#1d1a24"/><circle cx="12.92" cy="-9.18" r="2.04" fill="#fff"/>
-    <path d="M25.5 -1.7000000000000002l12.92 4.08l-12.92 4.08z" fill="#ff9f1c"/>
-    <path d="M-6.800000000000001 34 v11.899999999999999 M6.800000000000001 34 v11.899999999999999" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
-  </g>
-  <g transform="translate(192 226)">
-    <path d="M21.6 -2.4000000000000004l16.799999999999997 -8.399999999999999l-4.800000000000001 14.399999999999999z" fill="#ffd24a"/>
-    <circle r="24" fill="#ffd24a" stroke="#fff" stroke-width="4" paint-order="stroke"/>
-    <ellipse cx="-3.5999999999999996" cy="8.399999999999999" rx="13.200000000000001" ry="10.8" fill="#fff3bf"/>
-    <circle cx="-7.68" cy="-4.800000000000001" r="3.84" fill="#1d1a24"/><circle cx="-9.120000000000001" cy="-6.48" r="1.44" fill="#fff"/>
-    <path d="M-18.0 -1.2000000000000002l-9.120000000000001 2.88l9.120000000000001 2.88z" fill="#ff9f1c"/>
-    <path d="M-4.800000000000001 24 v8.399999999999999 M4.800000000000001 24 v8.399999999999999" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
-  </g>
-  <g transform="translate(244 220)">
-    <path d="M18.0 -2.0l14.0 -7.0l-4.0 12.0z" fill="#9b86ff"/>
-    <circle r="20" fill="#9b86ff" stroke="#fff" stroke-width="4" paint-order="stroke"/>
-    <ellipse cx="-3.0" cy="7.0" rx="11.0" ry="9.0" fill="#e8e2ff"/>
-    <circle cx="-6.4" cy="-4.0" r="3.2" fill="#1d1a24"/><circle cx="-7.6" cy="-5.4" r="1.2" fill="#fff"/>
-    <path d="M-15.0 -1.0l-7.6 2.4l7.6 2.4z" fill="#ff9f1c"/>
-    <path d="M-4.0 20 v7.0 M4.0 20 v7.0" stroke="#ff9f1c" stroke-width="3" stroke-linecap="round"/>
-  </g>
-  <text x="150" y="62" text-anchor="middle" class="cv-title" fill="#fff8d6" stroke="#5a1f45" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Todos en la rama</text>
-  <text x="150" y="92" text-anchor="middle" class="cv-sub" fill="#5a1f45">aunque seamos distintos</text>
-  <text x="18" y="386" class="cv-auth" fill="#fff">Gloria Carrasco</text>
-  <use href="#mark" x="246" y="356" width="38" height="35"/>
-</svg></div>
+      <div class="bk__cover"><img src="images/covers/rama.jpg" alt="Portada de Todos en la rama" loading="lazy"></div>
+      <ul class="bk__tags"><li>Inclusión y diversidad</li><li>6 a 8 años</li></ul>
       <h3 class="bk__title">Todos en la rama</h3>
       <p class="bk__text">Pájaros de todos los colores buscan un lugar en el mismo árbol.</p>
-      <ul class="bk__tags"><li>Inclusión y diversidad</li><li>6 a 8 años</li></ul>
     </article>
+    </div>
   </div>
 </section>
 
@@ -326,10 +182,38 @@
   </div>
 </section>
 
+<!-- ============ LA CAJA QUE SE ABRE ============ -->
+<section class="slab slab--sky boxsec" id="caja" aria-label="Un cuento para abrir como un regalo">
+  <div class="boxsec__stage">
+    <p class="hand boxsec__note">un cuento para abrir<br>como un regalo</p>
+    <div class="box3d" aria-hidden="true">
+      <div class="box3d__in">
+        <div class="bx bx--bottom"></div>
+        <div class="bx bx--back"></div><div class="bx bx--left"></div><div class="bx bx--right"></div>
+        <div class="bx bx--in-back"></div><div class="bx bx--in-left"></div><div class="bx bx--in-right"></div><div class="bx bx--in-front"></div>
+        <div class="bx bx--front"></div>
+        <div class="box3d__book"><div class="b3d b3d--box" style="--spine:#2f7f8f" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/ardillin.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div></div>
+        <div class="lid">
+          <div class="lid__top"><span class="lid__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg></span></div>
+          <div class="lid__under"></div>
+          <div class="lid__flap"></div>
+        </div>
+      </div>
+    </div>
+    <h2 class="big boxsec__title">Ábrelo juntos</h2>
+  </div>
+</section>
+
 <!-- ============ COMPETENCIAS: palabras gigantes ============ -->
 <section class="section slab slab--pink words" aria-labelledby="words-t">
   <div class="wrap">
-    <p class="hand words__kicker" id="words-t">para crecer sintiendo</p>
+    <p class="hand words__kicker" id="words-t">elige entre</p>
     <ul class="words__list">
       <li>Autorregulación</li><li>Empatía</li><li>Autonomía</li><li>Escucha activa</li><li>Respeto</li><li>Autoconciencia</li><li>Convivencia</li><li>¡y mucho más!</li>
     </ul>
@@ -373,7 +257,7 @@
   </div>
 </section>
 
-<!-- ============ POR QUÉ CUMAY: pastillas ============ -->
+<!-- ============ POR QUÉ CUMAY ============ -->
 <section class="section slab slab--sun why-cumay" aria-labelledby="why-t">
   <div class="wrap">
     <h2 class="big" id="why-t">¿Por qué Cumay?</h2>
@@ -391,18 +275,18 @@
 <!-- ============ EL PROGRAMA ============ -->
 <section class="section program" id="programa">
   <div class="wrap">
-    <div class="section__head reveal">
+    <div class="section__head">
       <p class="hand">programa de educación socioemocional infantil</p>
       <h2 class="big">El poder de los cuentos</h2>
       <p class="program__lead">La literatura infantil entretiene y también forma. Con cuentos animados e interactivos ayudamos a los niños a desarrollar su inteligencia emocional y a llevar lo aprendido a su vida diaria, a sus relaciones y a la construcción de un futuro mejor.</p>
     </div>
     <div class="why">
-      <div class="why__text reveal">
+      <div class="why__text">
         <h3>¿Por qué en la infancia?</h3>
         <p>La educación socioemocional es el pilar del desarrollo cognitivo, la salud mental y el éxito futuro.</p>
         <p>En la primera infancia la <strong>plasticidad cerebral</strong> alcanza su punto máximo: las estructuras de regulación emocional se están moldeando activamente a través de la interacción con el entorno.</p>
       </div>
-      <figure class="ages reveal" aria-label="Edades del programa: de 3 a 8 años">
+      <figure class="ages" aria-label="Edades del programa: de 3 a 8 años">
         <figcaption class="ages__title">De <strong>3</strong> a <strong>8</strong> años</figcaption>
         <div class="ages__track">
           <div class="ages__fill"></div>
@@ -415,7 +299,7 @@
       </figure>
     </div>
     <div class="pillars">
-      <div class="pillars__head reveal">
+      <div class="pillars__head">
         <h3>Fundamento científico</h3>
         <p>Seis marcos de la psicología del desarrollo sostienen cada cuento.</p>
       </div>
@@ -457,38 +341,9 @@
 
 <!-- ============ CINTAS ============ -->
 <div class="ribbons" aria-hidden="true">
-  <div class="ribbon ribbon--pink"><div class="ribbon__in">Cuentos en papel ✦ Sin pantallas ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ Cuentos en papel ✦ Sin pantallas ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ </div></div>
-  <div class="ribbon ribbon--sky"><div class="ribbon__in">Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ Tocar ✦ Preguntar ✦ Conversar ✦ Sentir ✦ </div></div>
+  <div class="ribbon ribbon--pink"><div class="ribbon__in">Cuentos en papel ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ Cuentos en papel ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ Cuentos en papel ✦ De 3 a 8 años ✦ Hechos por una psicóloga ✦ </div></div>
+  <div class="ribbon ribbon--sky"><div class="ribbon__in">Leer ✦ Interactuar ✦ Llevarlo a la vida ✦ Leer ✦ Interactuar ✦ Llevarlo a la vida ✦ Leer ✦ Interactuar ✦ Llevarlo a la vida ✦ </div></div>
 </div>
-
-<!-- ============ ARDILLÍN ============ -->
-<section class="section slab slab--leaf" id="cuento">
-  <div class="wrap split split--rev">
-    <div class="feature__art">
-      <div class="feature__cover">
-        <img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve" loading="lazy">
-      </div>
-      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
-        <defs><path id="badge-c" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
-        <circle cx="60" cy="60" r="58" fill="#ff4fb8"/>
-        <text class="badge__txt"><textPath href="#badge-c" textLength="270" lengthAdjust="spacing">primer cuento ✦ primer cuento ✦</textPath></text>
-        <use href="#heart" x="44" y="45" width="32" height="30" color="#fff"/>
-      </svg>
-    </div>
-    <div class="feature__copy">
-      <p class="hand">el primer cuento</p>
-      <h2 class="big">Ardillín <small>Copo de nieve</small></h2>
-      <!-- PENDIENTE: reemplazar por la sinopsis real del cuento -->
-      <p>El primer cuento de Cumay, escrito por Gloria Carrasco. Una historia en papel para leer en compañía y conversar sobre lo que sentimos.</p>
-      <ul class="ticks">
-        <li>Para niños de 3 a 8 años</li>
-        <li>Partes para tocar y descubrir</li>
-        <li>Preguntas para conversar en casa y en la escuela</li>
-      </ul>
-      <a href="#contacto" class="btn btn--white"><span>Avísame cuando esté disponible</span><i class="btn__ic"><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-    </div>
-  </div>
-</section>
 
 <!-- ============ AUTORA ============ -->
 <section class="section slab slab--lilac" id="autora">
@@ -503,8 +358,9 @@
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ PREGUNTAS ============ -->
 <section class="section faq" id="faq">
+  <svg class="faq__blob" viewBox="0 0 1400 900" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120C200 40 420 140 560 80S900 0 1100 90 1400 60 1400 60V900H0Z"/><path d="M80 900C120 700 300 640 420 700S700 900 760 900Z" class="faq__blob2"/></svg>
   <div class="wrap faq__in">
     <h2 class="big">Preguntas frecuentes</h2>
     <div class="faq__list">
@@ -512,143 +368,63 @@
       <details class="qa"><summary>¿Qué es un cuento mayéutico?<i></i></summary><div class="qa__a"><p>Un cuento que no entrega todas las respuestas: con preguntas, acompaña al niño a encontrarlas por sí mismo.</p></div></details>
       <details class="qa"><summary>¿Por qué en papel y no en pantalla?<i></i></summary><div class="qa__a"><p>Cumay nace para alejar a los niños de las pantallas. Un libro físico se toca, se comparte y se lee en compañía.</p></div></details>
       <details class="qa"><summary>¿Sirve para la escuela?<i></i></summary><div class="qa__a"><p>Sí. El programa conecta escuela y hogar: las preguntas del cuento abren la conversación en ambos lugares.</p></div></details>
-      <details class="qa"><summary>¿Cuándo sale Ardillín?<i></i></summary><div class="qa__a"><p>Muy pronto. Déjanos tu correo más abajo y te avisamos apenas esté disponible.</p></div></details>
     </div>
+    <a href="#contacto" class="btn"><span>Escríbenos</span><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
   </div>
 </section>
 
-<!-- ============ CONTACTO ============ -->
-<section class="section slab slab--pink final" id="contacto">
-  <div class="wrap final__in">
-    <p class="hand">¿nos leemos?</p>
-    <h2 class="big">Sé de los primeros en leer Cumay</h2>
-    <p>Déjanos tu correo y te contamos cuando los cuentos estén listos.</p>
-    <form class="signup" id="signup" novalidate>
-      <label class="sr" for="email">Tu correo</label>
-      <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email">
-      <button class="btn" type="submit"><span>Avísenme ♥</span></button>
-    </form>
-    <p class="signup__msg" id="signupMsg" role="status"></p>
+<!-- ============ UN ABRAZO MÁS (texto que entra de costado) ============ -->
+<section class="section hug" aria-labelledby="hug-t">
+  <h2 class="hug__line" id="hug-t"><span>Un abrazo más en cada cuento</span></h2>
+  <div class="wrap hug__in">
+    <div class="hug__copy">
+      <p>Leer juntos es tiempo compartido. Cada cuento Cumay invita a sentarse, abrir el libro y conversar sobre lo que sentimos.</p>
+      <a href="#contacto" class="btn"><span>Quiero saber más</span><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+    </div>
+    <div class="hug__book"><div class="b3d b3d--hug" style="--spine:#6a55c4" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/vuelves.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div></div>
   </div>
 </section>
 
 </main>
 
-<footer class="footer">
+<!-- ============ PIE ============ -->
+<footer class="footer" id="contacto">
+  <div class="footer__cap" aria-hidden="true"></div>
   <div class="wrap footer__in">
-    <a href="#top" class="logo logo--light" aria-label="Cumay">
-      <svg class="logo__mark" viewBox="0 0 72 66"><use href="#mark"/></svg>
-      <span class="logo__text">
-        <span class="logo__word">Cumay</span>
-        <span class="logo__tag">cuentos mayéuticos</span>
-      </span>
-    </a>
-    <p>© <span id="year">2026</span> Cumay · Hecho con cariño, en papel.</p>
-  </div>
-</footer>
-
-<!-- ============ LIBRO ANIMADO (pop-up): vuela desde el hero, se abre y las figuras se levantan ============ -->
-<div id="flybook" aria-label="Cuento Cumay abierto">
-  <div class="fb__intro"><div class="fb__float"><div class="fb__tilt"><div class="fb__lean">
-    <div class="fb__shadow"></div>
-    <div class="fb">
-
-      <!-- Página derecha final (R3) -->
-      <div class="pg pg--base pg--r">
-        <div class="pgc pgc--center">
-          <img class="mini-cover" src="images/ardillin-portada.jpg" alt="Ardillín, Copo de nieve">
-          <h3>Ardillín</h3>
-          <p>El primer cuento de Cumay ya viene en camino.</p>
-          <a href="#cuento" class="btn btn--small">Conoce el cuento</a>
-        </div>
-      </div>
-
-      <!-- Hoja 3: frente R2 / reverso L3 -->
-      <div class="leaf leaf--3">
-        <div class="face face--f pg pg--r">
-          <div class="pgc">
-            <p class="eyebrow">Cómo se lee</p>
-            <h3>Tres pasos, ninguna pantalla</h3>
-            <ol class="mini-steps">
-              <li><b>1</b><span><strong>Lee.</strong> Los personajes muestran cómo resolver situaciones reales.</span></li>
-              <li><b>2</b><span><strong>Interactúa.</strong> Responde preguntas, propone opciones y descubre las consecuencias de sus decisiones.</span></li>
-              <li><b>3</b><span><strong>Llévalo a la vida.</strong> Conversar en casa y en la escuela.</span></li>
-            </ol>
-          </div>
-        </div>
-        <div class="face face--b pg pg--l">
-          <div class="pgc pgc--center pgc--quote">
-            <svg class="quote-heart"><use href="#heart"/></svg>
-            <p class="quote">Una pantalla menos.<br>Un abrazo más.</p>
-            <p class="quote-sub">Para niños de 3 a 8 años.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hoja 2: frente R1 / reverso L2 -->
-      <div class="leaf leaf--2">
-        <div class="face face--f pg pg--r q-page">
-          <div class="pgc pgc--center">
-            <div class="question" role="button" tabindex="0" aria-label="Toca para ver otra pregunta">
-              <span class="question__label">Pregunta para conversar</span>
-              <p class="question__text">¿Qué haces cuando te enojas mucho? ¿Qué te ayuda a calmarte?</p>
-              <span class="question__hint">Toca para otra pregunta ↻</span>
-            </div>
-          </div>
-        </div>
-        <div class="face face--b pg pg--l">
-          <div class="pgc">
-            <p class="eyebrow">Lo que cada cuento deja</p>
-            <h3>Lo que aprenden con cada cuento</h3>
-            <ul class="mini-list">
-              <li style="--c:#f2677d"><i>♥</i><span><strong>Autorregulación.</strong> Enojo, frustración, timidez.</span></li>
-              <li style="--c:#3fb0c4"><i>☺</i><span><strong>Habilidades sociales.</strong> Empatía y comunicación asertiva.</span></li>
-              <li style="--c:#f2b43c"><i>✋</i><span><strong>Convivencia y respeto.</strong> Límites, inclusión y diversidad.</span></li>
-              <li style="--c:#6db33f"><i>♡</i><span><strong>Escuela y hogar.</strong> Un entorno seguro y predecible.</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hoja 1: frente R0 (escena pop-up) / reverso L1 -->
-      <div class="leaf leaf--1">
-        <div class="face face--f pg pg--r scene scene--r">
-          <div class="scene__art"></div>
-          <div class="pu pu--hill" style="--x:10px;--b:190px;--w:320px;--h:112px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#79c24a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div>
-          <div class="pu pu--tree" style="--x:258px;--b:120px;--w:78px;--h:132px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#4f9a2f" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#6fba49" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
-          <div class="pu pu--sq" style="--x:56px;--b:64px;--w:190px;--h:251px"><svg viewBox="0 -14 230 304"><path d="M122 272C24 252 -2 112 66 40c40-42 118-44 146 8 24 52-12 160-52 224z" fill="#d6d6de" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M92 62c34-28 82-24 100 6M104 98c32-22 62-14 78 10M118 138c24-14 42-8 52 10" stroke="#aaaab6" stroke-width="5" stroke-linecap="round" fill="none"/><ellipse cx="112" cy="214" rx="56" ry="64" fill="#f6f6f9" stroke="#fff" stroke-width="6" paint-order="stroke"/><circle cx="64" cy="66" r="19" fill="#fbfbfd" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="160" cy="66" r="19" fill="#fbfbfd" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="64" cy="68" r="10" fill="#f2b1c0"/><circle cx="160" cy="68" r="10" fill="#f2b1c0"/><ellipse cx="112" cy="114" rx="64" ry="56" fill="#fbfbfd" stroke="#fff" stroke-width="6" paint-order="stroke"/><ellipse cx="82" cy="110" rx="21" ry="26" fill="#f5c4d0"/><ellipse cx="142" cy="110" rx="21" ry="26" fill="#f5c4d0"/><ellipse cx="84" cy="110" rx="15" ry="20" fill="#1d1a24"/><ellipse cx="140" cy="110" rx="15" ry="20" fill="#1d1a24"/><circle cx="89" cy="102" r="5.5" fill="#fff"/><circle cx="145" cy="102" r="5.5" fill="#fff"/><circle cx="80" cy="118" r="2.5" fill="#fff"/><circle cx="136" cy="118" r="2.5" fill="#fff"/><ellipse cx="112" cy="140" rx="9" ry="6.5" fill="#e88aa0"/><path d="M112 146v6M106 154q6 5 12 0" stroke="#c9879a" stroke-width="2.5" stroke-linecap="round" fill="none"/><rect x="105" y="154" width="14" height="17" rx="3" fill="#fff" stroke="#d9d5c6" stroke-width="2"/><ellipse cx="70" cy="216" rx="14" ry="30" transform="rotate(18 70 216)" fill="#f6f6f9" stroke="#e4e4ec" stroke-width="3"/><ellipse cx="154" cy="216" rx="14" ry="30" transform="rotate(-18 154 216)" fill="#f6f6f9" stroke="#e4e4ec" stroke-width="3"/></svg></div>
-          <div class="pu pu--acorn" style="--x:118px;--b:26px;--w:98px;--h:120px"><svg viewBox="0 0 130 160"><path d="M65 38C26 38 14 70 20 104c6 34 22 52 45 52s39-18 45-52c6-34-6-66-45-66z" fill="#e6d3a4" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M40 70c-6 20-4 44 6 60" stroke="#f3e6c2" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M8 52C8 20 34 8 65 8s57 12 57 44c0 8-12 12-57 12S8 60 8 52z" fill="#8b4a2b" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M26 28l18 30M52 14l10 46M82 14l-6 46M104 28L88 58" stroke="#6e3a21" stroke-width="3.500" stroke-linecap="round"/><path d="M60 8c0-8 4-8 10-14" stroke="#6e3a21" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
-          <div class="pu pu--cloud" style="--x:190px;--b:350px;--w:110px;--h:56px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div>
-        </div>
-        <div class="face face--b pg pg--l">
-          <div class="pgc">
-            <p class="eyebrow">¿Qué es un cuento mayéutico?</p>
-            <h3>Los mejores finales los escriben los niños.</h3>
-            <p>La <strong>mayéutica</strong> es el arte de “dar a luz” ideas a través de preguntas.</p>
-            <p>Un cuento mayéutico no entrega todas las respuestas: <strong>acompaña al niño a encontrarlas por sí mismo</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tapa: frente portada / reverso L0 (escena pop-up) -->
-      <div class="leaf leaf--0">
-        <div class="face face--f cover">
-          <img src="images/ardillin-portada.jpg" alt="Portada de Ardillín, Copo de nieve">
-          <span class="book__spine"></span>
-        </div>
-        <div class="face face--b pg pg--l scene scene--l">
-          <div class="scene__art"></div>
-          <div class="pu pu--hill" style="--x:20px;--b:168px;--w:310px;--h:115px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#8fcf5a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div>
-          <div class="pu pu--tree" style="--x:24px;--b:96px;--w:100px;--h:170px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#4f9a2f" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#6fba49" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
-          <div class="pu pu--tree" style="--x:140px;--b:150px;--w:64px;--h:108px"><svg viewBox="0 0 100 170"><rect x="43" y="112" width="14" height="56" rx="3" fill="#8a5a33"/><path d="M50 6C20 28 6 68 12 100c8 26 68 26 76 0C94 68 80 28 50 6z" fill="#5aa636" stroke="#fff" stroke-width="5" paint-order="stroke"/><path d="M50 22C34 42 26 70 30 96" stroke="#7fc558" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
-          <div class="pu pu--sun" style="--x:200px;--b:290px;--w:92px;--h:92px"><svg viewBox="0 0 100 100"><g stroke="#f6c944" stroke-width="7" stroke-linecap="round"><path d="M50 4v14M50 82v14M4 50h14M82 50h14M17 17l10 10M73 73l10 10M83 17L73 27M27 73L17 83"/></g><circle cx="50" cy="50" r="26" fill="#ffe27a" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="41" cy="46" r="3" fill="#8b4a2b"/><circle cx="59" cy="46" r="3" fill="#8b4a2b"/><path d="M42 58q8 7 16 0" stroke="#8b4a2b" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
-          <div class="pu pu--cloud" style="--x:40px;--b:330px;--w:130px;--h:66px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div>
-        </div>
-      </div>
-
+    <div class="footer__brand">
+      <a href="#top" class="logo logo--light" aria-label="Cumay">
+        <svg class="logo__mark" viewBox="0 0 72 66"><use href="#mark"/></svg>
+        <span class="logo__text"><span class="logo__word">Cumay</span><span class="logo__tag">cuentos mayéuticos</span></span>
+      </a>
+      <nav class="footer__links" aria-label="Pie de página">
+        <a href="#mayeutica">¿Qué es?</a><a href="#cuentos">Cuentos</a><a href="#como">Cómo se lee</a><a href="#programa">El programa</a><a href="#faq">Preguntas</a>
+      </nav>
     </div>
-  </div></div></div></div>
-</div>
+    <div class="footer__book"><div class="b3d b3d--foot" style="--spine:#c2468f" aria-hidden="true">
+  <div class="b3d__in">
+    <div class="b3d__front"><img src="images/covers/rama.jpg" alt="" loading="lazy"></div>
+    <div class="b3d__back"></div><div class="b3d__spine"></div>
+    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
+  </div>
+</div></div>
+    <div class="footer__form">
+      <h2>Sé de los primeros en leer Cumay</h2>
+      <form class="signup" id="signup" novalidate>
+        <label class="sr" for="email">Tu correo</label>
+        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email">
+        <button class="btn" type="submit"><span>Avísenme</span><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+      </form>
+      <p class="signup__msg" id="signupMsg" role="status"></p>
+    </div>
+  </div>
+  <div class="footer__bar"><div class="wrap"><p>© <span id="year">2026</span> Cumay · Hecho con cariño, en papel.</p></div></div>
+</footer>
 
 </body>
 </html>
