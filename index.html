@@ -183,15 +183,22 @@
 </section>
 
 <!-- ============ LA CAJA QUE SE ABRE ============ -->
-<section class="slab slab--sky boxsec" id="caja" aria-label="Un cuento para abrir como un regalo">
+<section class="slab slab--sky boxsec" id="caja" aria-labelledby="box-t">
+  <svg class="boxsec__waves" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-40 640C160 520 300 700 520 640S860 420 1060 500 1340 700 1440 640V940H-40Z"/>
+    <path class="w2" d="M-40 220C120 120 280 260 420 200S700 60 860 140 1180 300 1440 180V-40H-40Z"/>
+  </svg>
   <div class="boxsec__stage">
-    <p class="hand boxsec__note">un cuento para abrir<br>como un regalo</p>
+    <div class="boxsec__copy">
+      <p class="hand">cada cuento llega</p>
+      <h2 class="big" id="box-t">Ábrelo juntos</h2>
+      <p class="boxsec__lead">Un libro de tapa dura, grueso y para tocar, que llega listo para descubrir en familia.</p>
+    </div>
     <div class="box3d" aria-hidden="true">
+      <div class="box3d__shadow"></div>
       <div class="box3d__in">
         <div class="bx bx--bottom"></div>
-        <div class="bx bx--back"></div><div class="bx bx--left"></div><div class="bx bx--right"></div>
         <div class="bx bx--in-back"></div><div class="bx bx--in-left"></div><div class="bx bx--in-right"></div><div class="bx bx--in-front"></div>
-        <div class="bx bx--front"></div>
         <div class="box3d__book"><div class="b3d b3d--box" style="--spine:#2f7f8f" aria-hidden="true">
   <div class="b3d__in">
     <div class="b3d__front"><img src="images/covers/ardillin.jpg" alt="" loading="lazy"></div>
@@ -199,14 +206,17 @@
     <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
   </div>
 </div></div>
+        <div class="bx bx--back"></div><div class="bx bx--left"></div><div class="bx bx--right"></div>
+        <div class="bx bx--front"><span class="bx__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg></span></div>
         <div class="lid">
-          <div class="lid__top"><span class="lid__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg></span></div>
+          <div class="lid__top"><span class="lid__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg><b>Cumay</b></span></div>
           <div class="lid__under"></div>
           <div class="lid__flap"></div>
+          <div class="lid__side lid__side--l"></div><div class="lid__side lid__side--r"></div>
         </div>
       </div>
     </div>
-    <h2 class="big boxsec__title">Ábrelo juntos</h2>
+    <p class="hand boxsec__note">un cuento para abrir<br>como un regalo</p>
   </div>
 </section>
 
