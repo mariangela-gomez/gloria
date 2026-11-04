@@ -100,8 +100,89 @@
   </div>
 </section>
 
+<!-- ============ EL LIBRO QUE SE ABRE ============ -->
+<section class="slab slab--sky opener" id="libro" aria-labelledby="opener-t">
+  <svg class="opener__waves" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-40 660C160 540 300 720 520 660S860 440 1060 520 1340 720 1440 660V940H-40Z"/>
+    <path class="w2" d="M-40 200C120 100 280 240 420 180S700 40 860 120 1180 280 1440 160V-40H-40Z"/>
+  </svg>
+  <div class="opener__copy">
+    <p class="hand">un libro para abrir, tocar y conversar</p>
+    <h2 class="big" id="opener-t">Ábrelo y descúbrelo</h2>
+    <p class="opener__hint" aria-hidden="true">sigue bajando ↓</p>
+  </div>
+  <div class="ob-stage" aria-label="Libro Cumay abierto">
+    <div class="ob" id="ob">
+      <div class="ob__lean">
+        <div class="ob__shadow"></div>
+        <!-- grosor del libro (páginas) -->
+        <div class="ob__edge ob__edge--r"></div><div class="ob__edge ob__edge--b"></div><div class="ob__edge ob__edge--t"></div>
+
+        <!-- página derecha final -->
+        <div class="pg pg--r pg--base">
+          <div class="pgc pgc--center">
+            <p class="eyebrow">Para niños de</p>
+            <p class="pg-ages"><strong>3</strong> a <strong>8</strong> años</p>
+            <p>Cada cuento trabaja una emoción y se lee en familia o en la escuela.</p>
+            <a href="#cuentos" class="btn"><span>Ver los cuentos</span><i><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+          </div>
+        </div>
+
+        <!-- hoja 2: frente = solapa interactiva / reverso = lo que aprenden -->
+        <div class="leaf leaf--2">
+          <div class="face face--f pg pg--r">
+            <div class="pgc">
+              <p class="eyebrow">Partes para descubrir</p>
+              <h3>Levanta la solapa</h3>
+              <div class="flap" tabindex="0" role="button" aria-label="Levantar la solapa">
+                <div class="flap__under">
+                  <p>¿Cómo te sientes hoy?</p>
+                  <ul class="flap__faces"><li>😊</li><li>😢</li><li>😠</li><li>😨</li></ul>
+                </div>
+                <div class="flap__lid"><span>Toca aquí</span></div>
+              </div>
+              <p class="pg-note">Solapas, preguntas y pausas para que el niño participe en la historia.</p>
+            </div>
+          </div>
+          <div class="face face--b pg pg--l">
+            <div class="pgc">
+              <p class="eyebrow">Lo que aprenden</p>
+              <h3>Un mensaje positivo en cada página</h3>
+              <ul class="mini-list">
+                <li style="--c:#ff3fa4"><i>♥</i><span><strong>Autorregulación.</strong> Enojo, frustración, timidez.</span></li>
+                <li style="--c:#3fb0c4"><i>☺</i><span><strong>Habilidades sociales.</strong> Empatía y comunicación asertiva.</span></li>
+                <li style="--c:#f9a12e"><i>✋</i><span><strong>Convivencia y respeto.</strong> Límites, inclusión y diversidad.</span></li>
+                <li style="--c:#6db33f"><i>⌂</i><span><strong>Escuela y hogar.</strong> Un entorno seguro y predecible.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- hoja 1: frente = escena pop-up derecha / reverso = qué es -->
+        <div class="leaf leaf--1">
+          <div class="face face--f pg pg--r scene scene--r"><div class="scene__art"></div><div class="pu pu--cloud" style="--x:180px;--b:350px;--w:110px;--h:56px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div><div class="pu pu--fly" style="--x:52px;--b:290px;--w:70px;--h:52px"><svg viewBox="0 0 80 60"><ellipse cx="24" cy="24" rx="20" ry="16" fill="#ff7ab8" stroke="#fff" stroke-width="4" paint-order="stroke"/><ellipse cx="56" cy="24" rx="20" ry="16" fill="#ff7ab8" stroke="#fff" stroke-width="4" paint-order="stroke"/><ellipse cx="28" cy="44" rx="12" ry="10" fill="#b9a6ff" stroke="#fff" stroke-width="4" paint-order="stroke"/><ellipse cx="52" cy="44" rx="12" ry="10" fill="#b9a6ff" stroke="#fff" stroke-width="4" paint-order="stroke"/><rect x="37" y="14" width="6" height="38" rx="3" fill="#141018"/></svg></div><div class="pu pu--hill" style="--x:10px;--b:190px;--w:320px;--h:112px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#79c24a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div><div class="pu pu--tree" style="--x:240px;--b:140px;--w:96px;--h:128px"><svg viewBox="-20 -40 40 44"><ellipse cx="0" cy="1" rx="6.9" ry="2.3" fill="#000" opacity=".12"/><path d="M0 0V-29.9" stroke="#6b3a1e" stroke-width="2.8" stroke-linecap="round"/><path d="M0 -39.1C12.6 -29.9 12.6 -11.5 0 -6.9C-12.6 -11.5 -12.6 -29.9 0 -39.1z" fill="#a6d84a"/><path d="M0 -13.8l5.8 -5.8M0 -20.7l-5.8 -5.8M0 -26.4l4.6 -4.6" stroke="#6b3a1e" stroke-width="1.6" stroke-linecap="round"/><path d="M0 -6.9V-34.5" stroke="#6b3a1e" stroke-width="1.8"/></svg></div><div class="pu pu--tree" style="--x:12px;--b:170px;--w:80px;--h:106px"><svg viewBox="-20 -40 40 44"><ellipse cx="0" cy="1" rx="6.9" ry="2.3" fill="#000" opacity=".12"/><path d="M0 0V-29.9" stroke="#6b3a1e" stroke-width="2.8" stroke-linecap="round"/><path d="M0 -39.1C12.6 -29.9 12.6 -11.5 0 -6.9C-12.6 -11.5 -12.6 -29.9 0 -39.1z" fill="#86cf3c"/><path d="M0 -13.8l5.8 -5.8M0 -20.7l-5.8 -5.8M0 -26.4l4.6 -4.6" stroke="#6b3a1e" stroke-width="1.6" stroke-linecap="round"/><path d="M0 -6.9V-34.5" stroke="#6b3a1e" stroke-width="1.8"/></svg></div><div class="pu pu--acorn" style="--x:110px;--b:40px;--w:120px;--h:148px"><svg viewBox="0 0 130 160"><path d="M65 38C26 38 14 70 20 104c6 34 22 52 45 52s39-18 45-52c6-34-6-66-45-66z" fill="#e6d3a4" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M40 70c-6 20-4 44 6 60" stroke="#f3e6c2" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M8 52C8 20 34 8 65 8s57 12 57 44c0 8-12 12-57 12S8 60 8 52z" fill="#8b4a2b" stroke="#fff" stroke-width="6" paint-order="stroke"/><path d="M26 28l18 30M52 14l10 46M82 14l-6 46M104 28L88 58" stroke="#6e3a21" stroke-width="3.500" stroke-linecap="round"/><path d="M60 8c0-8 4-8 10-14" stroke="#6e3a21" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div></div>
+          <div class="face face--b pg pg--l">
+            <div class="pgc">
+              <p class="eyebrow">¿Qué es un cuento mayéutico?</p>
+              <h3>Los mejores finales los escriben los niños</h3>
+              <p>La <strong>mayéutica</strong> es el arte de “dar a luz” ideas a través de preguntas.</p>
+              <p>Un cuento mayéutico no entrega todas las respuestas: <strong>acompaña al niño a encontrarlas por sí mismo</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- tapa: frente = portada / reverso = escena pop-up izquierda -->
+        <div class="leaf leaf--0">
+          <div class="face face--f cover"><img src="images/covers/ardillin.jpg" alt="Portada de Ardillín, Copo de nieve"></div>
+          <div class="face face--b pg pg--l scene scene--l"><div class="scene__art"></div><div class="pu pu--cloud" style="--x:40px;--b:340px;--w:120px;--h:60px"><svg viewBox="0 0 140 70"><path d="M24 62a20 20 0 0 1 2-40 28 28 0 0 1 52-8 24 24 0 0 1 40 14 18 18 0 0 1-2 34z" fill="#fff"/><path d="M24 62h94" stroke="#cfe9ef" stroke-width="4" stroke-linecap="round"/></svg></div><div class="pu pu--sun" style="--x:210px;--b:300px;--w:90px;--h:90px"><svg viewBox="0 0 100 100"><g stroke="#f6c944" stroke-width="7" stroke-linecap="round"><path d="M50 4v14M50 82v14M4 50h14M82 50h14M17 17l10 10M73 73l10 10M83 17L73 27M27 73L17 83"/></g><circle cx="50" cy="50" r="26" fill="#ffe27a" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="41" cy="46" r="3" fill="#8b4a2b"/><circle cx="59" cy="46" r="3" fill="#8b4a2b"/><path d="M42 58q8 7 16 0" stroke="#8b4a2b" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div><div class="pu pu--hill" style="--x:20px;--b:168px;--w:310px;--h:115px"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 120V66C58 10 138 0 190 30c40 24 80 12 110-10v100z" fill="#8fcf5a" stroke="#fff" stroke-width="5" paint-order="stroke"/></svg></div><div class="pu pu--tree" style="--x:146px;--b:160px;--w:70px;--h:92px"><svg viewBox="-20 -40 40 44"><ellipse cx="0" cy="1" rx="6.9" ry="2.3" fill="#000" opacity=".12"/><path d="M0 0V-29.9" stroke="#6b3a1e" stroke-width="2.8" stroke-linecap="round"/><path d="M0 -39.1C12.6 -29.9 12.6 -11.5 0 -6.9C-12.6 -11.5 -12.6 -29.9 0 -39.1z" fill="#a6d84a"/><path d="M0 -13.8l5.8 -5.8M0 -20.7l-5.8 -5.8M0 -26.4l4.6 -4.6" stroke="#6b3a1e" stroke-width="1.6" stroke-linecap="round"/><path d="M0 -6.9V-34.5" stroke="#6b3a1e" stroke-width="1.8"/></svg></div><div class="pu pu--tree" style="--x:14px;--b:100px;--w:120px;--h:160px"><svg viewBox="-20 -40 40 44"><ellipse cx="0" cy="1" rx="6.9" ry="2.3" fill="#000" opacity=".12"/><path d="M0 0V-29.9" stroke="#6b3a1e" stroke-width="2.8" stroke-linecap="round"/><path d="M0 -39.1C12.6 -29.9 12.6 -11.5 0 -6.9C-12.6 -11.5 -12.6 -29.9 0 -39.1z" fill="#86cf3c"/><path d="M0 -13.8l5.8 -5.8M0 -20.7l-5.8 -5.8M0 -26.4l4.6 -4.6" stroke="#6b3a1e" stroke-width="1.6" stroke-linecap="round"/><path d="M0 -6.9V-34.5" stroke="#6b3a1e" stroke-width="1.8"/></svg></div><div class="pu pu--bush" style="--x:170px;--b:70px;--w:130px;--h:76px"><svg viewBox="0 0 120 70"><path d="M8 66c-6-22 10-40 28-34 4-20 34-26 44-6 18-8 38 8 32 40z" fill="#6db33f" stroke="#fff" stroke-width="5" paint-order="stroke"/><circle cx="36" cy="40" r="5" fill="#ff7ab8"/><circle cx="70" cy="30" r="5" fill="#fff"/><circle cx="92" cy="46" r="5" fill="#ffd24a"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ¿QUÉ ES? ============ -->
-<section class="section slab slab--sky" id="mayeutica">
+<section class="section slab slab--sky static-only" id="mayeutica">
   <div class="wrap split">
     <div>
       <p class="hand">¿qué es un cuento mayéutico?</p>
@@ -179,44 +260,6 @@
       <li class="scard scard--pink"><span class="hand scard__n">Paso #2</span><svg viewBox="0 0 120 90"><circle cx="40" cy="44" r="26" fill="#fff" stroke="#1b1530" stroke-width="4"/><text x="40" y="56" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="34" fill="#1b1530">?</text><path d="M74 30h36v26H86l-10 10v-10h-2z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M84 43h16" stroke="#1b1530" stroke-width="4" stroke-linecap="round"/></svg><h3>Interactúa</h3><p>Responde preguntas, propone opciones y descubre las consecuencias de sus decisiones.</p></li>
       <li class="scard scard--sun"><span class="hand scard__n">Paso #3</span><svg viewBox="0 0 120 90"><path d="M20 80V44l30-24 30 24v36z" fill="#fff" stroke="#1b1530" stroke-width="4" stroke-linejoin="round"/><path d="M42 80V60h16v20" fill="none" stroke="#1b1530" stroke-width="4"/><path d="M96 34c-6-5-10-8-10-13 0-3 2-5 5-5 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 2 5 5 0 5-4 8-10 13z" fill="#e8264a" stroke="#1b1530" stroke-width="3"/></svg><h3>Llévalo a la vida</h3><p>Las preguntas abren la conversación en casa y en la escuela, para aplicar lo aprendido en el día a día.</p></li>
     </ol>
-  </div>
-</section>
-
-<!-- ============ LA CAJA QUE SE ABRE ============ -->
-<section class="slab slab--sky boxsec" id="caja" aria-labelledby="box-t">
-  <svg class="boxsec__waves" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path d="M-40 640C160 520 300 700 520 640S860 420 1060 500 1340 700 1440 640V940H-40Z"/>
-    <path class="w2" d="M-40 220C120 120 280 260 420 200S700 60 860 140 1180 300 1440 180V-40H-40Z"/>
-  </svg>
-  <div class="boxsec__stage">
-    <div class="boxsec__copy">
-      <p class="hand">cada cuento llega</p>
-      <h2 class="big" id="box-t">Ábrelo juntos</h2>
-      <p class="boxsec__lead">Un libro de tapa dura, grueso y para tocar, que llega listo para descubrir en familia.</p>
-    </div>
-    <div class="box3d" aria-hidden="true">
-      <div class="box3d__shadow"></div>
-      <div class="box3d__in">
-        <div class="bx bx--bottom"></div>
-        <div class="bx bx--in-back"></div><div class="bx bx--in-left"></div><div class="bx bx--in-right"></div><div class="bx bx--in-front"></div>
-        <div class="box3d__book"><div class="b3d b3d--box" style="--spine:#2f7f8f" aria-hidden="true">
-  <div class="b3d__in">
-    <div class="b3d__front"><img src="images/covers/ardillin.jpg" alt="" loading="lazy"></div>
-    <div class="b3d__back"></div><div class="b3d__spine"></div>
-    <div class="b3d__pages b3d__pages--side"></div><div class="b3d__pages b3d__pages--top"></div><div class="b3d__pages b3d__pages--bottom"></div>
-  </div>
-</div></div>
-        <div class="bx bx--back"></div><div class="bx bx--left"></div><div class="bx bx--right"></div>
-        <div class="bx bx--front"><span class="bx__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg></span></div>
-        <div class="lid">
-          <div class="lid__top"><span class="lid__seal"><svg viewBox="0 0 72 66"><use href="#mark"/></svg><b>Cumay</b></span></div>
-          <div class="lid__under"></div>
-          <div class="lid__flap"></div>
-          <div class="lid__side lid__side--l"></div><div class="lid__side lid__side--r"></div>
-        </div>
-      </div>
-    </div>
-    <p class="hand boxsec__note">un cuento para abrir<br>como un regalo</p>
   </div>
 </section>
 

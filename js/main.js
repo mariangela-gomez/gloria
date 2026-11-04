@@ -84,8 +84,8 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!motion) return;
     root.classList.add('js-anim');
 
-    /* ----- La caja va primero: su sección se fija y desplaza a las de abajo ----- */
-    initBox(narrow);
+    /* ----- El libro va primero: su sección se fija y desplaza a las de abajo ----- */
+    const cleanupOpener = narrow ? () => {} : initOpener();
 
     /* ----- Hero: título palabra por palabra ----- */
     const title = $('.hi-title');
@@ -132,14 +132,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* ----- Bloques de color: entran como páginas que se apilan ----- */
     $$('.slab').forEach(el => {
-      if (el.matches('.boxsec')) return;
+      if (el.matches('.opener')) return;
       gsap.fromTo(el, { scale: .93, y: 60 }, { scale: 1, y: 0, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 55%', scrub: .6 } });
     });
 
     /* ----- Títulos y notas a mano ----- */
-    $$('.big').forEach(h => { if (!h.closest('.boxsec')) fromIn(h, { y: 50, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: enter(h, 'top 88%') }); });
-    $$('.hand').forEach(h => { if (!h.closest('.boxsec')) fromIn(h, { opacity: 0, scale: .7, rotation: -14, duration: .7, ease: 'back.out(2)', scrollTrigger: enter(h, 'top 90%') }); });
+    $$('.big').forEach(h => { if (!h.closest('.opener')) fromIn(h, { y: 50, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: enter(h, 'top 88%') }); });
+    $$('.hand').forEach(h => { if (!h.closest('.opener')) fromIn(h, { opacity: 0, scale: .7, rotation: -14, duration: .7, ease: 'back.out(2)', scrollTrigger: enter(h, 'top 90%') }); });
     fromIn('.mayeutica__text p', { y: 30, opacity: 0, duration: .8, stagger: .15, ease: 'power3.out', scrollTrigger: enter('.mayeutica__text') });
 
     /* ----- Catálogo ----- */
@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
     gsap.to('.b3d--foot .b3d__in', { y: -14, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
     requestAnimationFrame(() => ScrollTrigger.refresh());
-    return () => root.classList.remove('js-anim');
+    return () => { cleanupOpener(); root.classList.remove('js-anim'); };
   });
 
   /* ---------- Catálogo: tarjetas a distintas alturas que se reacomodan con las flechas ---------- */
@@ -223,34 +223,84 @@ window.addEventListener('DOMContentLoaded', () => {
     prev.disabled = true;
   }
 
-  /* ---------- La caja: se abre con el scroll y Ardillín sale de adentro ---------- */
-  function initBox(narrow) {
-    const sec = $('.boxsec');
-    const inn = $('.box3d__in');
-    const cs = getComputedStyle(inn);
-    const bh = parseFloat(cs.getPropertyValue('--bh')) || 150;
-    const t = parseFloat(getComputedStyle($('.b3d--box')).getPropertyValue('--t')) || 34;
-    const rest = { '--open': '0deg', '--by': (bh / 2 - t / 2 - 3) + 'px', '--bx': '90deg', '--bry': '0deg', '--bz': '0deg' };
-    gsap.set(inn, rest);
+  /* ---------- El libro: se abre con el scroll, las figuras se levantan y pasan las páginas ---------- */
+  function initOpener() {
+    const sec = $('.opener'), ob = $('#ob'), lean = $('.ob__lean');
+    const W = 340, H = 453, T = 26;
+    const leaves = [$('.leaf--0', ob), $('.leaf--1', ob), $('.leaf--2', ob)];
+    const fronts = [...leaves.map(l => $('.face--f', l)), $('.pg--base', ob)];
+    const backs = leaves.map(l => $('.face--b', l));
+    const zs = [T + 3, T + 2, T + 1]; // la tapa va sobre el canto; cada hoja un poco más baja
+    const g = { S: 1 };
+    const measure = () => { g.S = Math.min((innerHeight - 170) / H, innerWidth * .86 / (2 * W)); };
+    measure();
+    sec.classList.add('is-live'); root.classList.add('js-opener');
+    leaves.forEach((l, i) => gsap.set(l, { z: zs[i] }));
+    gsap.set([...backs, ...fronts.slice(1, 3)], { visibility: 'hidden' });
+    // figuras: acostadas sobre la página; se levantan de adelante hacia atrás
+    const pops = ['acorn', 'bush', 'tree', 'fly', 'sun', 'cloud', 'hill'].flatMap(k => $$('.pu--' + k, ob));
+    const shadows = pops.map(p => {
+      const sh = document.createElement('i'); sh.className = 'pu__sh'; sh.setAttribute('style', p.getAttribute('style')); p.before(sh); return sh;
+    });
+    pops.forEach((p, i) => gsap.set(p, { rotationX: 0, z: (pops.length - i) * .04 }));
+
+    // cerrado: libro a la derecha del texto, girado para que se vea su grosor
+    const closed = () => ({ x: -W * g.S / 2 + Math.min(220, innerWidth * .14), y: 0, scale: g.S * .8, rotationY: -26, rotationX: 10, rotation: 4 });
+    gsap.set(ob, closed());
+    const float = gsap.to(lean, { y: -12, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
     const tl = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
-      scrollTrigger: narrow
-        ? { trigger: sec, start: 'top 70%', end: 'bottom 40%', scrub: .6 }
-        : { trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 1.8, pin: true, scrub: .7, anticipatePin: 1, invalidateOnRefresh: true }
+      scrollTrigger: {
+        trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 4.6, pin: true, scrub: .6, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: measure,
+        onToggle: st => ob.classList.toggle('live', st.isActive),
+        onUpdate: st => float.timeScale(st.progress < .02 ? 1 : 0)
+      }
     });
-    tl.fromTo('.box3d', { y: 90, rotation: -3 }, { y: 0, rotation: 0, duration: 1 }, 0)
-      .fromTo('.boxsec__copy > *', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: .7, stagger: .15 }, .1)
-      .fromTo('.box3d__shadow', { scale: .8, opacity: .6 }, { scale: 1, opacity: 1, duration: 1 }, 0)
-      // la tapa se levanta con un pequeño rebote
-      .to(inn, { '--open': '112deg', duration: 1.3, ease: 'back.out(1.4)' }, .9)
-      // el libro sale de la caja, se endereza y gira para mostrar su lomo
-      .to(inn, { '--by': (-bh * 1.4) + 'px', duration: 1.4, ease: 'power3.out' }, 1.8)
-      .to(inn, { '--bx': '-4deg', duration: 1.2, ease: 'power2.inOut' }, 2.0)
-      .to(inn, { '--bry': '-16deg', '--bz': '-4deg', duration: 1.2, ease: 'power2.inOut' }, 2.3)
-      .fromTo('.boxsec__note', { opacity: 0, scale: .6, rotation: -20 }, { opacity: 1, scale: 1, rotation: -8, duration: .6, ease: 'back.out(2)' }, 2.8)
-      .to({}, { duration: .6 });
-    // flotación suave del libro una vez fuera
-    gsap.to('.b3d--box .b3d__in', { y: -10, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    const turn = (i, t) => {
+      tl.set(fronts[i + 1], { visibility: 'visible' }, t)
+        .to(leaves[i], { rotationY: -180, z: zs[i] - T, duration: 1.2 }, t)
+        .set(fronts[i], { visibility: 'hidden' }, t + .6)
+        .set(backs[i], { visibility: 'visible' }, t + .6);
+      // la hoja anterior queda tapada: se oculta entera (si no, Chrome recorta las dos hojas casi coplanares)
+      if (i) tl.set([backs[i - 1], leaves[i - 1]], { visibility: 'hidden' }, t + 1.2);
+    };
+    // 1) el texto se aparta y el libro se endereza al centro
+    tl.to('.opener__copy', { opacity: 0, x: -60, duration: .6 }, 0)
+      .to(lean, { y: 0, duration: .4 }, 0)
+      .fromTo(ob, closed, { x: () => -W * g.S / 2, scale: () => g.S, rotationY: 0, rotationX: 0, rotation: 0, duration: 1, immediateRender: false }, 0);
+    // 2) se abre la tapa y el libro se desplaza para mostrar la doble página
+    turn(0, 1);
+    tl.to(ob, { x: 0, duration: 1.2 }, 1);
+    // 3) pop-up: se inclina y las figuras se levantan
+    tl.to(lean, { rotationX: 55, y: 50, duration: .9 }, 2.4);
+    pops.forEach((p, i) => {
+      const t = 2.9 + i * .12;
+      tl.to(p, { rotationX: -90, duration: .8, ease: 'back.out(1.6)' }, t)
+        .fromTo(shadows[i], { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: .8, immediateRender: false }, t);
+    });
+    tl.to(pops, { rotationX: 0, duration: .6, stagger: { each: .04, from: 'end' }, ease: 'power2.in' }, 5.3)
+      .to(shadows, { opacity: 0, duration: .4 }, 5.5)
+      .to(lean, { rotationX: 0, y: 0, duration: .8 }, 5.7);
+    // 4) páginas con información
+    turn(1, 6.6); tl.addLabel('que', 7.9);
+    turn(2, 8.8);
+    tl.to({}, { duration: 1.2 }, 10.1);
 
+    // la solapa también se abre con clic o teclado
+    const flap = $('.flap', ob);
+    const toggleFlap = () => flap.classList.toggle('open');
+    flap.addEventListener('click', toggleFlap);
+    flap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlap(); } });
+    // "¿Qué es?" del menú lleva a esa página del libro
+    const navQ = $$('a[href="#mayeutica"]');
+    const goQ = e => { e.preventDefault(); scrollTo({ top: tl.scrollTrigger.labelToScroll('que') + 2, behavior: 'smooth' }); };
+    navQ.forEach(el => el.addEventListener('click', goQ));
+    return () => {
+      navQ.forEach(el => el.removeEventListener('click', goQ));
+      shadows.forEach(sh => sh.parentNode && sh.parentNode.removeChild(sh));
+      sec.classList.remove('is-live'); root.classList.remove('js-opener');
+    };
   }
 });
