@@ -288,16 +288,16 @@ window.addEventListener('DOMContentLoaded', () => {
     // 4) páginas con información
     turn(1, 6.6); tl.addLabel('que', 7.9);
     const lid = $('.flap__lid', ob);
-    gsap.set(lid, { transformPerspective: 700, transformOrigin: '50% 0%' });
-    tl.to(lid, { rotationX: -118, duration: .9, ease: 'back.out(1.4)' }, 8.2);
+    gsap.set(lid, { transformPerspective: 1300, transformOrigin: '50% 0%' });
+    tl.to(lid, { rotationX: 100, duration: .9, ease: 'back.out(1.4)' }, 8.2); // el borde de abajo sube hacia el lector
     turn(2, 9.6);
     tl.to({}, { duration: 1.2 }, 10.9);
 
     // la solapa también se abre con clic o teclado
     const flap = $('.flap', ob);
     const toggleFlap = () => {
-      const open = gsap.getProperty(lid, 'rotationX') < -80;
-      gsap.to(lid, { rotationX: open ? 0 : -118, duration: .7, ease: 'back.out(1.4)' });
+      const open = gsap.getProperty(lid, 'rotationX') > 60;
+      gsap.to(lid, { rotationX: open ? 0 : 100, duration: .7, ease: 'back.out(1.4)' });
       flap.setAttribute('aria-expanded', !open);
     };
     // en 3D el clic a veces lo recibe la página: toda la página abre la solapa
