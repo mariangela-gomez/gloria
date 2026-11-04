@@ -413,3 +413,7 @@ button.btn:not(:has(i)){padding-right:1.35em}
 .ob .btn{align-self:flex-start;font-size:.92rem}
 .ob .flap__lid{backface-visibility:visible}
 .ob .flap__lid{transform-style:preserve-3d}.ob .flap__lid span{backface-visibility:hidden}
+/* reverso de la solapa: cartulina, se ve cuando la solapa está levantada */
+.ob .flap__back{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,#fff7df,#f3e6c4);transform:rotateX(180deg) translateZ(1px);backface-visibility:hidden;box-shadow:inset 0 0 0 1px rgba(120,90,40,.15)}
+.ob .flap__lid{box-shadow:0 6px 10px -6px rgba(0,0,0,.35)}
+.ob .flap{margin-top:66px!important;height:126px}
