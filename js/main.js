@@ -170,7 +170,7 @@ window.addEventListener('DOMContentLoaded', () => {
     fromIn('.pillar', { y: 60, opacity: 0, duration: .8, stagger: .08, ease: 'back.out(1.5)', scrollTrigger: enter('.pillars__grid') });
 
     /* ----- Autora y preguntas ----- */
-    fromIn('.author__badge', { scale: 0, rotation: -40, duration: 1, ease: 'elastic.out(1,.55)', scrollTrigger: enter('.author', 'top 80%') });
+    fromIn('.author > div > *', { y: 30, opacity: 0, duration: .7, stagger: .1, ease: 'power3.out', scrollTrigger: enter('.author', 'top 80%') });
     fromIn('.qa', { y: 30, opacity: 0, duration: .6, stagger: .08, ease: 'power2.out', scrollTrigger: enter('.faq__list') });
 
     /* ----- Un abrazo más: el texto cruza la pantalla, luego aparece el libro ----- */
@@ -232,7 +232,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const backs = leaves.map(l => $('.face--b', l));
     const zs = [T + 3, T + 2, T + 1]; // la tapa va sobre el canto; cada hoja un poco más baja
     const g = { S: 1 };
-    const measure = () => { g.S = Math.min((innerHeight - 170) / H, innerWidth * .86 / (2 * W)); };
+    const measure = () => { g.S = Math.min((innerHeight - 170) / H, innerWidth * .86 / (2 * W)); applyZoom(); };
+    function applyZoom() { ob.style.zoom = g.S; }
     measure();
     sec.classList.add('is-live'); root.classList.add('js-opener');
     leaves.forEach((l, i) => gsap.set(l, { z: zs[i] }));
@@ -245,14 +246,15 @@ window.addEventListener('DOMContentLoaded', () => {
     pops.forEach((p, i) => gsap.set(p, { rotationX: 0, z: (pops.length - i) * .04 }));
 
     // cerrado: libro a la derecha del texto, girado para que se vea su grosor
-    const closed = () => ({ x: -W * g.S / 2 + Math.min(220, innerWidth * .14), y: 0, scale: g.S * .8, rotationY: -26, rotationX: 10, rotation: 4 });
+    // el tamaño se da con zoom (se dibuja a resolución real); x y scale van en unidades del libro
+    const closed = () => ({ x: -W / 2 + Math.min(220, innerWidth * .14) / g.S, y: 0, scale: .8, rotationY: -26, rotationX: 10, rotation: 4 });
     gsap.set(ob, closed());
     const float = gsap.to(lean, { y: -12, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
     const tl = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: {
-        trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 4.6, pin: true, scrub: .6, anticipatePin: 1,
+        trigger: sec, start: 'top top', end: () => '+=' + Math.min(innerHeight, 1000) * 5, pin: true, scrub: .6, anticipatePin: 1,
         invalidateOnRefresh: true, onRefreshInit: measure,
         onToggle: st => ob.classList.toggle('live', st.isActive),
         onUpdate: st => float.timeScale(st.progress < .02 ? 1 : 0)
@@ -269,7 +271,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // 1) el texto se aparta y el libro se endereza al centro
     tl.to('.opener__copy', { opacity: 0, x: -60, duration: .6 }, 0)
       .to(lean, { y: 0, duration: .4 }, 0)
-      .fromTo(ob, closed, { x: () => -W * g.S / 2, scale: () => g.S, rotationY: 0, rotationX: 0, rotation: 0, duration: 1, immediateRender: false }, 0);
+      .fromTo(ob, closed, { x: -W / 2, scale: 1, rotationY: 0, rotationX: 0, rotation: 0, duration: 1, immediateRender: false }, 0);
     // 2) se abre la tapa y el libro se desplaza para mostrar la doble página
     turn(0, 1);
     tl.to(ob, { x: 0, duration: 1.2 }, 1);
@@ -285,13 +287,21 @@ window.addEventListener('DOMContentLoaded', () => {
       .to(lean, { rotationX: 0, y: 0, duration: .8 }, 5.7);
     // 4) páginas con información
     turn(1, 6.6); tl.addLabel('que', 7.9);
-    turn(2, 8.8);
-    tl.to({}, { duration: 1.2 }, 10.1);
+    const lid = $('.flap__lid', ob);
+    gsap.set(lid, { transformPerspective: 700, transformOrigin: '50% 0%' });
+    tl.to(lid, { rotationX: -118, duration: .9, ease: 'back.out(1.4)' }, 8.2);
+    turn(2, 9.6);
+    tl.to({}, { duration: 1.2 }, 10.9);
 
     // la solapa también se abre con clic o teclado
     const flap = $('.flap', ob);
-    const toggleFlap = () => flap.classList.toggle('open');
-    flap.addEventListener('click', toggleFlap);
+    const toggleFlap = () => {
+      const open = gsap.getProperty(lid, 'rotationX') < -80;
+      gsap.to(lid, { rotationX: open ? 0 : -118, duration: .7, ease: 'back.out(1.4)' });
+      flap.setAttribute('aria-expanded', !open);
+    };
+    // en 3D el clic a veces lo recibe la página: toda la página abre la solapa
+    $('.q-page', ob).addEventListener('click', toggleFlap);
     flap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlap(); } });
     // "¿Qué es?" del menú lleva a esa página del libro
     const navQ = $$('a[href="#mayeutica"]');
